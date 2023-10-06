@@ -37,7 +37,7 @@ $router->add('/', ['GET'], function (Psr\Http\Message\ServerRequestInterface $re
 });
 
 try {
-    $response = $router->handle(new ServerRequest($_SERVER['REQUEST_METHOD'], $_REQUEST));
+    $response = $router->handle(new ServerRequest($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']));
 } catch (Zaphyr\Router\Exceptions\NotFoundException $exception) {
     // …handle 404
 } catch (Zaphyr\Router\Exceptions\MethodNotAllowedException $exception) {
