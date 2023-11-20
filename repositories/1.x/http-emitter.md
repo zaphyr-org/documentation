@@ -50,8 +50,8 @@ $response->getBody()->write('Hello World!');
 ```
 
 > [!NOTE]
->This repository does **NOT** come with a PSR-7 implementation out of the box. For a PSR-7 implementation, check out the
-[HTTP Message](/docs/repositories/latest/http-message) repository.
+> This repository does **NOT** come with a PSR-7 implementation out of the box. For a PSR-7 implementation, check out the
+> [HTTP Message](/docs/repositories/latest/http-message) repository.
 
 Within its internal implementation, `Zaphyr\HttpEmitter\SapiEmitter` performs several crucial verifications to ensure
 the proper functioning and integrity of the response emission process:
@@ -85,8 +85,8 @@ $response->getBody()->write('hello world');
 ```
 
 > [!NOTE]
->This repository does **NOT** come with a PSR-7 implementation out of the box. For a PSR-7 implementation, check out the
-[HTTP Message](/docs/repositories/latest/http-message) repository.
+> This repository does **NOT** come with a PSR-7 implementation out of the box. For a PSR-7 implementation, check out the
+> [HTTP Message](/docs/repositories/latest/http-message) repository.
 
 The `Zaphyr\HttpEmitter\SapiStreamEmitter` presents a constructor that accepts an integer argument, allowing you to
 specify the maximum buffer length for response emission. By default, if no value is provided, the emitter sets this

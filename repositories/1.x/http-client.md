@@ -34,8 +34,8 @@ $client = new Zaphyr\HttpClient\Client($responseFactory, $streamFactory);
 ```
 
 > [!NOTE]
->This repository does **NOT** come with a PSR-17 implementation out of the box. For a PSR-17 implementation, check out
-the [HTTP Message](/docs/repositories/latest/http-message#factories) repository.
+> This repository does **NOT** come with a PSR-17 implementation out of the box. For a PSR-17 implementation, check out
+> the [HTTP Message](/docs/repositories/latest/http-message#factories) repository.
 
 It is also possible to override/extend the cURL options. For this purpose, an array with the options is passed as the
 third parameter to the `Zaphyr\HttpClient\Client` object:

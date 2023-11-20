@@ -224,6 +224,6 @@ $response = $client->sendRequest($request);
 echo $response->getBody();
 ```
 
-> [!NOTE
+> [!NOTE]
 > This repository does **NOT** come with a PSR-18 implementation out of the box. For a PSR-18 implementation, check out
 > the [HTTP Client](/docs/repositories/latest/http-client) repository.
