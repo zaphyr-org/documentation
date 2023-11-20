@@ -777,6 +777,30 @@ Zaphyr\Utils\File::move('source-file', 'destination-target'); // true
 
 ---
 
+###  serialize
+
+<span class="badge rounded-pill text-bg-primary">Available since v2.2.0</span>
+
+Serializes the given data and writes it to a file.
+
+```php
+Zaphyr\Utils\File::serialize(__FILE__, ['foo' => 'bar']);
+```
+
+---
+
+### unserialize
+
+<span class="badge rounded-pill text-bg-primary">Available since v2.2.0</span>
+
+Unserializes the content of a given file.
+
+```php
+Zaphyr\Utils\File::unserialize(__FILE__);
+```
+
+---
+
 ### copy
 
 Copies a file to a given directory.
