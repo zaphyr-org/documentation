@@ -243,3 +243,46 @@ Now you can use configuration files with your own file extension.
 > [!NOTE]
 > New reader instances must always be added before the first use of the `load()` method.
 > Otherwise, the `load()` method throws an error because it does not yet know the new reader!
+
+---
+
+## Dependency Injection
+
+<span class="badge rounded-pill text-bg-primary">Available since v2.2.0</span>
+
+The config repository supports dependency injection, by using any [PSR-11](https://www.php-fig.org/psr/psr-11/)
+compatible DI container. The PSR-11 container instance can be set using the `setContainer` method:
+
+```php
+$container = new Container();
+$container->set(ServiceInterface::class, new Service());
+
+$config->setContainer($container);
+```
+
+Now your constructor parameters for custom [readers](#content-custom-configuration-readers) or
+[replacers](#content-create-a-custom-replacer) are automatically resolved by the DI container:
+
+```php
+class MySuperCustomReplacer implements Zaphyr\Config\Contracts\ReplacerInterface
+{
+    /**
+     * @var ServiceInterface
+     */
+     public function __construct(ServiceInterface $service)
+     {
+     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function replace(string $value): string
+    {
+        // Your custom replacer logic
+    }
+}
+```
+
+> [!NOTE]
+> This repository does **NOT** come with a PSR-11 implementation out of the box. For a PSR-11 implementation, check out
+> the [Container](/docs/1.x/repositories/container) repository.
