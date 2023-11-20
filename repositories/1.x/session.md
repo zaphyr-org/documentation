@@ -415,6 +415,17 @@ lifetime to a different value by passing the `minutes` parameter to the construc
 $handler = new Zaphyr\Session\Handler\DatabaseHandler($connection, minutes: 120);
 ```
 
+### Array session handler
+
+<span class="badge rounded-pill text-bg-primary">Available since v1.1.0</span>
+
+The session repository also comes shipped with an array session handler, which stores the session data in an array and
+prevent the session data from being persisted. The array session handler is useful for testing purposes:
+
+```php
+$handler = new Zaphyr\Session\Handler\ArrayHandler(minutes: 120);
+```
+
 ### Custom session handler
 
 If none of the provided session handlers fits your needs, you can create your own custom session handler. To create a
