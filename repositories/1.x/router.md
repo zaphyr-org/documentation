@@ -578,10 +578,10 @@ The group will only match if the incoming request's port matches the specified p
 
 ---
 
-## Middlewares
+## Middleware
 
 The router contains a [PSR-15](https://www.php-fig.org/psr/psr-15/) compliant middleware dispatcher, which means that it
-can handle the invocation of a stack of middlewares. Because the router is build around PSR-15, middlewares and controllers
+can handle the invocation of a stack of middleware. Because the router is build around PSR-15, middleware and controllers
 are handled in a [single pass approach](https://www.php-fig.org/psr/psr-15/meta/#52-single-pass-lambda). This means that
 all middleware is passed a request object and a request handler, but is expected to return its own response object or
 pass off to the next middleware in the stack by calling the `handle` method on the request handler.
@@ -611,7 +611,7 @@ the next middleware in the stack.
 
 ### Set middleware
 
-Middlewares can be defined to run in three different ways:
+Middleware can be defined to run in three different ways:
 
 1. On the router – The middleware will run on every route that is defined on the router.
 2. On a group – The middleware will run on every route that is defined in a group.
@@ -620,7 +620,7 @@ Middlewares can be defined to run in three different ways:
 Using the above example middleware, it is possible to wrap all routes with the `AuthMiddleware`:
 
 ```php
-$router->setMiddlewares([new AuthMiddleware()]);
+$router->setMiddleware([new AuthMiddleware()]);
 ```
 
 To lock down a group of routes, you can add the middleware to the group:
@@ -629,10 +629,10 @@ To lock down a group of routes, you can add the middleware to the group:
 $router->group('/admin', function (Zaphyr\Router\Attributes\Group $group) {
     $group->get('/dashboard', 'AdminController@dashboardAction');
     $group->get('/users', 'AdminController@usersAction');
-})->setMiddlewares([new AuthMiddleware()]);
+})->setMiddleware([new AuthMiddleware()]);
 ```
 
-Middlewares can also be added to attribute-based groups:
+Middleware can also be added to attribute-based groups:
 
 ```php
 #[Zaphyr\Router\Attributes\Group('/admin', middlewares: [AuthMiddleware::class])]
@@ -645,7 +645,7 @@ class AdminController
 To lock down a single route, you can add the middleware to the route:
 
 ```php
-$router->get('/admin/dashboard', 'AdminController@dashboardAction')->setMiddlewares([new AuthMiddleware()]);
+$router->get('/admin/dashboard', 'AdminController@dashboardAction')->setMiddleware([new AuthMiddleware()]);
 ```
 
 Or in attribute-based routing:
@@ -663,22 +663,22 @@ class AdminController
 
 ### Middleware dependencies
 
-You can pass middleware objects to the `setMiddleware` and `setMiddlewares` methods, but you can also pass class-strings
-to these methods. Passing class-strings to these methods has two advantages: First, the middleware is lazy-loaded, which
-means that the middleware is only instantiated when it is actually needed. Second, if you are using a container, the
-middleware will be resolved from the container, which means that you can inject dependencies into the middleware. Read
-more about dependency injection in the [dependency injection](#dependency-injection) section.
+You can pass middleware objects to the `setMiddleware` method or `middleware` attribute property, but you can also pass
+class-strings. Passing class-strings has two advantages: First, the middleware is lazy-loaded, which means that the
+middleware is only instantiated when it is actually needed. Second, if you are using a container, the middleware will be
+resolved from the container, which means that you can inject dependencies into the middleware. Read more about
+dependency injection in the [dependency injection](#dependency-injection) section.
 
 ### Middleware priority
 
-Middlewares are invoked in a specific order, yet, based on the middlewares internal logic, you can control whether your
+Middleware are invoked in a specific order, yet, based on the middleware internal logic, you can control whether your
 code executes before or after your controller is called into action.
 
 The order of execution is as follows:
 
-1. Middlewares that are defined on the router.
-2. Middlewares that are defined on a group.
-3. Middlewares that are defined on a route.
+1. Middleware that are defined on the router.
+2. Middleware that are defined on a group.
+3. Middleware that are defined on a route.
 
 To determine whether your logic runs before or after your controller, you can initiate the request handler as your
 initial middleware action. It will generate a response, allowing you to manipulate it as necessary before returning it:
