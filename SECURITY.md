@@ -1,7 +1,8 @@
 # Security vulnerabilities
 
-If you discover any security-related issues within our repositories, we kindly request that you **refrain from using the
-issue tracker on GitHub!** Instead, we encourage you to immediately report such matters to security@zaphyr.org.
+> [!CAUTION]
+> If you discover any security-related issues within our repositories, we kindly request that you **refrain from using
+> the issue tracker on GitHub!** Instead, we encourage you to immediately report such matters to security@zaphyr.org.
 
 At ZAPHYR, we prioritize the safety and integrity of our software. By reporting security vulnerabilities directly, you
 can help us ensure a swift and efficient response, allowing us to address the issue promptly and implement necessary
