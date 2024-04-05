@@ -1,13 +1,7 @@
 # Logger
 
-_You want to know what's happening "under the hood" of your application? ZAPHYR provides a robust
-[PSR-3](https://www.php-fig.org/psr/psr-3/) logging service._
-
----
-
-[TOC]
-
----
+You want to know what's happening "under the hood" of your application? ZAPHYR provides a robust
+[PSR-3](https://www.php-fig.org/psr/psr-3/) logging service.
 
 ## Installation
 
@@ -16,8 +10,6 @@ To get started, install the logger repository via the [Composer](https://getcomp
 ```console
 composer require zaphyr-org/logger
 ```
-
----
 
 ## Configuration
 
@@ -45,8 +37,7 @@ Via the LogManager multiple logger instances can be configured, and you can deci
 For example, you can create different log stacks for your development application and your production application.
 
 First we pass a default stack to the LogManager. In our example this is the `development` stack.  Whenever we make a log
-entry via the LogManager and do not pass a logger name to the `logger()` method, the default stack is used. You
-can read more about using the `logger()` method [here](#logging-with-a-logmanager-instance).
+entry via the LogManager and do not pass a logger name to the `logger()` method, the default stack is used.
 
 Next, we define the desired logger stacks and specify which log handlers each stack should use. In our example we have a
 `development` stack and a `production` stack:
@@ -70,8 +61,6 @@ $logManager = new Zaphyr\Logger\LogManager(
 $logManager->logger()->debug('This is a debug message'); // Uses the default "development" logger stack
 $logManager->logger('production')->debug('This is a debug message'); // Uses the defined "production" logger stack
 ```
-
----
 
 ## Logging
 
@@ -112,15 +101,13 @@ $logger->alert('Something went wrong', ['exception' => $exception]);
 
 In the log message there is now also a detailed representation of the passed Exception.
 
----
-
-### Handlers
+## Handlers
 
 The logging service comes with a handful of log handlers. They decide how log messages reach you or the responsible
 project owner. If the default handlers are not enough, you can
 [simply create a custom handler](#create-a-custom-handler).
 
-#### FileHandler
+### FileHandler
 
 The `Zaphyr\Logger\Handlers\FileHandler` is the simplest of all handlers. This handler simply writes log messages to the
 log file passed in the constructor. A new log entry is written at the end of the file:
@@ -132,7 +119,7 @@ $fileHandler = new Zaphyr\Logger\Handlers\FileHandler('/path/to/log/file.log');
 If the log file specified in the constructor does not exist, the `Zaphyr\Logger\Handlers\FileHandler` instance creates
 it on its own.
 
-> [!WARNING
+> [!WARNING]
 > The `FileHandler` stores log messages in a single file. So this handler should either be used in small projects
 > or it should be ensured that the log file is deleted or overwritten at regular intervals.
 > Otherwise, this log file can reach a considerable size and may overload the available storage space of your server!
@@ -235,8 +222,6 @@ $handlers = [
 
 $logger = new Zaphyr\Logger\Logger('development', $handlers);
 ```
-
----
 
 ## Formatters
 

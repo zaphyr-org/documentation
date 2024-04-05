@@ -1,12 +1,6 @@
 # Validate
 
-_Easy to use, highly customizable validator._
-
----
-
-[TOC]
-
----
+Easy to use, highly customizable validator.
 
 ## Installation
 
@@ -15,8 +9,6 @@ To get started, install the validate repository via the [Composer](https://getco
 ```console
 composer require zaphyr-org/validate
 ```
-
----
 
 ## Basic validation
 
@@ -59,8 +51,6 @@ In line 13 we finally check our input data against the validation rules.
 
 Last but not least, we call the `isValid()` method on line 15. This method returns `true` if all inputs are valid and
 `false` otherwise.
-
----
 
 ## Validation error messages
 
@@ -166,8 +156,6 @@ $validator->validate($inputs, $rules, [], $customFields);
 Congrats, you have renamed the `password_repeat` field e.g. Now the validation error message always shows
 "The password confirmation field is required" instead of "The password repeat field is required".
 
----
-
 ## Validation rules
 
 The ZAPHYR validation service comes already shipped with a huge number of validation rules. All validation rules are
@@ -202,7 +190,7 @@ stored in separate classes and can be found under the `Zaphyr\Validate\Rules` na
 | `'ipv4'`                                                                                                                                   | The field under validation must be an IPv4 address.                                                                                                                                                                                                                                                                                                         |
 | `'ipv6'`                                                                                                                                   | The field under validation must be an IPv6 address.                                                                                                                                                                                                                                                                                                         |
 | `'json'`                                                                                                                                   | The field under validation must be a valid JSON string.                                                                                                                                                                                                                                                                                                     |
-| `'mac'` <span class="badge rounded-pill text-bg-primary">Available since v2.0.0</span>                                                     | The field under validation must be a valid MAC address.                                                                                                                                                                                                                                                                                                     |
+| `'mac'` <span class="badge__available">Available since v2.0.0</span>                                                                       | The field under validation must be a valid MAC address.                                                                                                                                                                                                                                                                                                     |
 | `'max_array:2'`                                                                                                                            | The field under validation must be an array less than or equal to a maximum value (e.g. `2`).                                                                                                                                                                                                                                                               |
 | `'max_number:100'`                                                                                                                         | The field under validation must be a number less than or equal to a maximum value (e.g. `100`).                                                                                                                                                                                                                                                             |
 | `'max_string:7'`                                                                                                                           | The field under validation must be a string less than or equal to a maximum length (e.g. `7`).                                                                                                                                                                                                                                                              |
@@ -233,8 +221,6 @@ $rules = [
     'email' => 'required|email:dns,spoof',
 ];
 ```
-
----
 
 ## Custom validation rules
 
@@ -278,8 +264,6 @@ $validator->validate($inputs, $rules);
 > translation. For custom rules you have to define custom error messages as well. How you can store your own error
 > messages in translation files can be found in [here](#validation-error-messages-translations).
 
----
-
 ## Hooks
 
 Sometimes it can be helpful to perform a certain action immediately before or after validation. This validator service
@@ -304,8 +288,6 @@ $validator->addAfterValidationHook(function () {
     // add your after validation hook logic here
 });
 ```
-
----
 
 ## Validation error messages translations
 

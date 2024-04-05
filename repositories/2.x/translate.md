@@ -1,22 +1,14 @@
 # Translate
 
-_A simple translator to serve your applications in multiple languages._
+A simple translator to serve your applications in multiple languages.
 
----
-
-[TOC]
-
----
-
-### Installation
+## Installation
 
 To get started, install the translate repository via the [Composer](https://getcomposer.org/) package manager:
 
 ```console
 composer require zaphyr-org/translate
 ```
-
----
 
 ## Configuration and usage
 
@@ -96,8 +88,6 @@ $translator->getLocale(); // pl
 > this before calling the `get()` method. Otherwise, the `get()` method doesn't even know the changed locale that were
 > added in the `setLocale()` method and continues to use the locale set in the constructor of the translator instance.
 
----
-
 ## Fallback locale
 
 Sometimes you may not have fully translated your application in all languages. It makes sense to define a fallback
@@ -126,8 +116,6 @@ $translator->getFallbackLocale(); // en
 > your defined fallback language, you must call the `setFallbackLocale()` method before using the `get()` method.
 > Otherwise, the `get()` method does not yet know your defined fallback language and continues to use the fallback
 > language set in the constructor of the translator instance.
-
----
 
 ## Translation file reader
 
@@ -162,8 +150,6 @@ $translator->getReader(); // enum(Zaphyr\Translate\Enum\Reader::YAML)
 > does not yet know your desired reader and continues to use the file reader set in the constructor of the
 > translator instance.
 
----
-
 ## Replace translation parameters
 
 You can also use placeholders in your translation strings. All placeholders are surrounded by `%`. For example, you
@@ -191,8 +177,6 @@ return [
     'goodbye' => 'Goodbye %NAME%' // Goodbye JOHN
 ];
 ```
-
----
 
 ## Pluralization
 

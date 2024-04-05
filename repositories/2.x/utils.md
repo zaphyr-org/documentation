@@ -1,12 +1,6 @@
 # Utils
 
-_A collection of useful helper classes, which make a developer's workday a little easier._
-
----
-
-[TOC]
-
----
+A collection of useful helper classes, which make a developer's workday a little easier.
 
 ## Installation
 
@@ -16,15 +10,11 @@ To get started, install the utils repository via the [Composer](https://getcompo
 composer require zaphyr-org/utils
 ```
 
----
-
 ## Array
 
 Useful helper methods to work with arrays.
 
----
-
-### accessible
+#### accessible
 
 Determines whether the given value is an array.
 
@@ -32,9 +22,7 @@ Determines whether the given value is an array.
 Zaphyr\Utils\Arr::accessible(['foo' => ['bar']]); // true
 ```
 
-----
-
-### exists
+#### exists
 
 Determines whether the given key exists in the provided array.
 
@@ -42,9 +30,7 @@ Determines whether the given key exists in the provided array.
 Zaphyr\Utils\Arr::exists(['foo' => ['bar']], 'foo'); // true
 ```
 
-----
-
-### set
+#### set
 
 Sets an array item to a given value using "dot" notation.
 If no key is given to the method, the entire array will be replaced.
@@ -58,9 +44,7 @@ Zaphyr\Utils\Arr::set($array, 'bar.baz', 'QUX'); // ['foo' => ['bar'], 'bar' => 
 Zaphyr\Utils\Arr::set($array, ['bar' => 'BAR', 'baz' => 'BAZ']) // ['bar' => 'BAR', 'baz' => 'BAZ']
 ```
 
-----
-
-### add
+#### add
 
 Adds an element to an array using "dot" notation if the given key doesn't exist.
 The `add` method will not overwrite existing keys!
@@ -72,9 +56,7 @@ Zaphyr\Utils\Arr::add($array, 'baz', 'qux'); // ['foo' => ['bar'], 'baz' => 'qux
 Zaphyr\Utils\Arr::add($array, 'foo', 'BAR'); // ['foo' => ['bar']]
 ```
 
-----
-
-### get
+#### get
 
 Returns an item from an array using "dot" notation.
 
@@ -88,9 +70,7 @@ The `get()` method also accepts a default value, which will be returned if the s
 Zaphyr\Utils\Arr::get(['foo' => ['bar' => 'baz']], 'foo.qux', 'qux');
 ```
 
-----
-
-### first
+#### first
 
 Returns the first element in an array passing a given truth test.
 
@@ -106,9 +86,7 @@ This value will be returned if no value passes the truth test.
 Zaphyr\Utils\Arr::first([100, 200, 300], fn ($value, $key) => $value <= 50, 100); // 100
 ```
 
-----
-
-### last
+#### last
 
 Returns the last element in an array passing a given truth test.
 
@@ -123,9 +101,7 @@ This value will be returned if no value passes the truth test.
 Zaphyr\Utils\Arr::last([100, 200, 300], fn ($value, $key) => $value >= 400, 400); // 400
 ```
 
-----
-
-### has
+#### has
 
 Checks if an item or items exist in an array using "dot" notation.
 
@@ -133,9 +109,7 @@ Checks if an item or items exist in an array using "dot" notation.
 Zaphyr\Utils\Arr::has(['foo' => ['bar' => 'baz'], 'qux'], 'foo.bar'); // true
 ```
 
-----
-
-### where
+#### where
 
 Filters an array using the given callback.
 
@@ -143,9 +117,7 @@ Filters an array using the given callback.
 Zaphyr\Utils\Arr::where([100, '200', 300], fn ($value, $key) => is_string($value)); // ['200']
 ```
 
-----
-
-### only
+#### only
 
 Returns a subset of the items from the given array.
 
@@ -153,9 +125,7 @@ Returns a subset of the items from the given array.
 Zaphyr\Utils\Arr::only(['foo' => 'bar', 'baz' => 'qux', 'quu' => 'qaa'], ['foo', 'quu']); // ['foo' => 'bar', 'quu' => 'qaa']
 ```
 
-----
-
-### forget
+#### forget
 
 Removes one or many array items from a given array using "dot" notation.
 
@@ -167,9 +137,7 @@ Zaphyr\Utils\Arr::forget($array, ['baz', 'quu']);
 $array; // ['foo' => 'bar']
 ```
 
-----
-
-### except
+#### except
 
 Returns all the given array elements except for a specified array of keys.
 
@@ -177,15 +145,11 @@ Returns all the given array elements except for a specified array of keys.
 Zaphyr\Utils\Arr::except(['foo' => 'bar', 'baz' => 'qux', 'quu' => 'qaa'], ['foo', 'quu']); // ['baz' => 'qux']
 ```
 
-----
-
 ## ClassFinder
 
 Useful helper methods to work with classes.
 
----
-
-### getClassesFromDirectory
+#### getClassesFromDirectory
 
 Returns an array with all classes of a given directory.
 
@@ -193,12 +157,10 @@ Returns an array with all classes of a given directory.
 Zaphyr\Utils\ClassFinder::getClassesFromDirectory('src'); // […]
 ```
 
----
-
-### getClassNameFromFile
+#### getClassNameFromFile
 
 > [!WARNING]
-> This method will be removed in v3.0. Use [getClassBasename](#getclassbasename) method instead!
+> This method will be removed in v3.0. Use `getClassBasename` method instead!
 
 Returns the class name of a given file.
 
@@ -206,11 +168,9 @@ Returns the class name of a given file.
 Zaphyr\Utils\ClassFinder::getClassNameFromFile('src/Foo.php'); // 'Foo'
 ```
 
----
+#### getClassBasename
 
-### getClassBasename
-
-<span class="badge rounded-pill text-bg-primary">Available since v2.0.0</span>
+<span class="badge__available">Available since v2.0.0</span>
 
 Returns the class basename of a given string or object.
 
@@ -220,9 +180,7 @@ Zaphyr\Utils\ClassFinder::getClassBasename('Foo\Bar\Baz'); // 'Baz'
 Zaphyr\Utils\ClassFinder::getClassBasename(new \stdClass()); // 'stdClass'
 ```
 
----
-
-### getNamespaceFromFile
+#### getNamespaceFromFile
 
 Returns the namespace from a given file.
 
@@ -230,17 +188,13 @@ Returns the namespace from a given file.
 Zaphyr\Utils\ClassFinder::getNamespaceFromFile('src/Bar.php'); // 'Foo\Bar'
 ```
 
-----
-
 ## Country
 
 Useful helper class for country names and lists.
 
----
+#### getNameByIsoCode
 
-### getNameByIsoCode
-
-<span class="badge rounded-pill text-bg-primary">Available since v2.0.0</span>
+<span class="badge__available">Available since v2.0.0</span>
 
 Returns a country name by its corresponding ISO code.
 
@@ -248,9 +202,7 @@ Returns a country name by its corresponding ISO code.
 Zaphyr\Utils\Country::getNameByIsoCode('DE'); // 'Germany'
 ```
 
----
-
-### getAllCountries
+#### getAllCountries
 
 Returns an array of all available countries with ISO code as key.
 
@@ -261,11 +213,10 @@ Zaphyr\Utils\Country::getAllCountries(); // ['AF' => 'Afghanistan', […] 'ZW' =
 > [!NOTE]
 > Since v2.0.0 this method returns the ISO code of a country as array key.
 
----
 
-### getAllCountriesAsJsonString
+#### getAllCountriesAsJsonString
 
-<span class="badge rounded-pill text-bg-primary">Available since v2.0.0</span>
+<span class="badge__available">Available since v2.0.0</span>
 
 Returns a JSON string of all available countries with ISO code as key.
 
@@ -273,15 +224,11 @@ Returns a JSON string of all available countries with ISO code as key.
 Zaphyr\Utils\Country::getAllCountriesAsJsonString(); // ‘{'AF': 'Afghanistan', […] 'ZW': 'Zimbabwe'}'
 ```
 
----
-
 ## Date
 
 Useful helper methods to work with dates and times.
 
----
-
-### timestamp
+#### timestamp
 
 Returns the current timestamp or the timestamp of a given date.
 
@@ -292,9 +239,7 @@ Zaphyr\Utils\Date::timestamp('1663918860'); // 1663918860
 Zaphyr\Utils\Date::timestamp('yesterday'); // 'yesterday'
 ```
 
----
-
-### timezone
+#### timezone
 
 Returns the timezone.
 
@@ -304,9 +249,7 @@ Zaphyr\Utils\Date::timezone()->getName(); // 'UTC'
 Zaphyr\Utils\Date::timezone('GMT')->getName(); // 'GMT'
 ```
 
----
-
-### factory
+#### factory
 
 Returns a DateTime object.
 
@@ -315,9 +258,7 @@ Zaphyr\Utils\Date::factory(); // \DateTime::class
 Zaphyr\Utils\Date::factory('2022-09-13 09:41:00'); // \DateTime::class
 ```
 
----
-
-### sqlFormat
+#### sqlFormat
 
 Return a SQL compliant date format.
 
@@ -327,9 +268,7 @@ Zaphyr\Utils\Date::sqlFormat(1663918860); // '2022-09-13 09:41:00'
 Zaphyr\Utils\Date::sqlFormat('2022-09-13'); // '2022-09-13 00:00:00'
 ```
 
----
-
-### humanReadable
+#### humanReadable
 
 Returns a human-readable date format.
 
@@ -338,9 +277,7 @@ Zaphyr\Utils\Date::humanReadable(1663918860); // '23 Sep 2022 09:41'
 Zaphyr\Utils\Date::humanReadable('2022-09-23 09:41:00', 'd F Y'); // '23 September 2022'
 ```
 
----
-
-### isValid
+#### isValid
 
 Determines whether a given date is valid.
 
@@ -351,9 +288,7 @@ Zaphyr\Utils\Date::isValid('2022-09-23 09:41:00'); // true
 Zaphyr\Utils\Date::isValid(''); // false
 ```
 
----
-
-### isToday
+#### isToday
 
 Determines whether a given date is today.
 
@@ -361,9 +296,7 @@ Determines whether a given date is today.
 Zaphyr\Utils\Date::isToday('+0 day'); // true
 ```
 
----
-
-### isTomorrow
+#### isTomorrow
 
 Determines whether a given date is tomorrow.
 
@@ -372,9 +305,7 @@ Zaphyr\Utils\Date::isTomorrow('+1 day'); // true
 Zaphyr\Utils\Date::isTomorrow('+0 day'); // false
 ```
 
----
-
-### isThisWeek
+#### isThisWeek
 
 Determines whether a given date is this week.
 
@@ -383,9 +314,7 @@ Zaphyr\Utils\Date::isThisWeek('+0 week'); // ture
 Zaphyr\Utils\Date::isThisWeek('+1 week'); // false
 ```
 
----
-
-### isThisMonth
+#### isThisMonth
 
 Determines whether a given date is this month.
 
@@ -394,9 +323,7 @@ Zaphyr\Utils\Date::isThisMonth('+0 month'); // true
 Zaphyr\Utils\Date::isThisMonth('+1 month') // false
 ```
 
----
-
-### isThisYear
+#### isThisYear
 
 Determines whether a given date is this year.
 
@@ -405,15 +332,11 @@ Zaphyr\Utils\Date::isThisYear('+0 year'); // true
 Zaphyr\Utils\Date::isThisYear('+1 year'); // false
 ```
 
----
-
 ## File
 
 Useful helper methods to work with files and folders.
 
----
-
-### exists
+#### exists
 
 > [!WARNING]
 > This method will be removed in v3.0. Use PHP built-in function "file_exists" instead!
@@ -425,9 +348,7 @@ Zaphyr\Utils\File::exists(__FILE__); // true
 Zaphyr\Utils\File::exists(__DIR__); // true
 ```
 
----
-
-### isFile
+#### isFile
 
 > [!WARNING]
 > This method will be removed in v3.0. Use PHP built-in function "is_file" instead!
@@ -439,9 +360,7 @@ Zaphyr\Utils\File::isFile(__FILE__); // true
 Zaphyr\Utils\File::isFile(__DIR__); // false
 ```
 
----
-
-### isDirectory
+#### isDirectory
 
 > [!WARNING]
 > This method will be removed in v3.0. Use PHP built-in function "is_dir" instead!
@@ -453,9 +372,7 @@ Zaphyr\Utils\File::isDir(__DIR__); // true
 Zaphyr\Utils\File::isDir(__FILE__); // false
 ```
 
----
-
-### info
+#### info
 
 Returns a path information of a given file or directory.
 
@@ -475,9 +392,7 @@ Any valid `PATHINFO_*` constant can be used:
 Zaphyr\Utils\File::info(__FILE__, PATHINFO_EXTENSION);
 ```
 
----
-
-### name
+#### name
 
 Returns the name of a file or directory path.
 
@@ -486,9 +401,7 @@ Zaphyr\Utils\File::name(__FILE__);
 Zaphyr\Utils\File::name(__DIR__);
 ```
 
----
-
-### basename
+#### basename
 
 Returns the basename of a file or directory path.
 
@@ -497,9 +410,7 @@ Zaphyr\Utils\File::basename(__FILE__);
 Zaphyr\Utils\File::basename(__DIR__);
 ```
 
----
-
-### dirname
+#### dirname
 
 Returns the directory name of a file or directory.
 
@@ -508,9 +419,7 @@ Zaphyr\Utils\File::dirname(__FILE__);
 Zaphyr\Utils\File::dirname(__DIR__);
 ```
 
----
-
-### extension
+#### extension
 
 Returns the file extension of a given file.
 
@@ -518,9 +427,7 @@ Returns the file extension of a given file.
 Zaphyr\Utils\File::extension(__FILE__);
 ```
 
----
-
-### type
+#### type
 
 Returns the type of file or directory.
 
@@ -529,9 +436,7 @@ Zaphyr\Utils\File::type(__FILE__); // 'file'
 Zaphyr\Utils\File::type(__DIR__); // 'dir'
 ```
 
----
-
-### mimeType
+#### mimeType
 
 Returns the mime type of file or directory.
 
@@ -540,9 +445,7 @@ Zaphyr\Utils\File::mimeType(__FILE__); // 'text/x-php'
 Zaphyr\Utils\File::mimeType(__DIR__); // 'directory'
 ```
 
----
-
-### size
+#### size
 
 Returns the size of a file or directory as an integer.
 
@@ -551,9 +454,7 @@ Zaphyr\Utils\File::size(__FILE__);
 Zaphyr\Utils\File::size(__DIR__);
 ```
 
----
-
-### hash
+#### hash
 
 Calculates the md5 hash of a given file.
 
@@ -561,9 +462,7 @@ Calculates the md5 hash of a given file.
 Zaphyr\Utils\File::hash(__FILE__);
 ```
 
----
-
-### chmod
+#### chmod
 
 Changes the file mode.
 
@@ -575,9 +474,7 @@ Zaphyr\Utils\File::chmod(__DIR__, '0775'); // bool
 Zaphyr\Utils\File::chmod(__DIR__); // '0775'
 ```
 
----
-
-### lastModified
+#### lastModified
 
 Returns the file modification time as an integer.
 
@@ -586,9 +483,7 @@ Zaphyr\Utils\File::lastModified(__FILE__);
 Zaphyr\Utils\File::lastModified(__DIR__);
 ```
 
----
-
-### isReadable
+#### isReadable
 
 Determines whether a file or directory is readable.
 
@@ -597,9 +492,7 @@ Zaphyr\Utils\File::isReadable(__FILE__); // true
 Zaphyr\Utils\File::isReadable(__DIR__); // true
 ```
 
----
-
-### isWritable
+#### isWritable
 
 Determines whether a file or directory is writable.
 
@@ -608,9 +501,7 @@ Zaphyr\Utils\File::isWritable(__FILE__); // true
 Zaphyr\Utils\File::isWritable(__DIR__); // true
 ```
 
----
-
-### glob
+#### glob
 
 Finds all pathname of a matching pattern.
 
@@ -624,9 +515,7 @@ You can also pass a second parameter to specify the flags. Any valid `GLOB_*` co
 Zaphyr\Utils\File::glob(__DIR__ . '/*.*', GLOB_ONLYDIR); // […]
 ```
 
----
-
-### files
+#### files
 
 Returns all files in a given directory.
 
@@ -638,9 +527,7 @@ Zaphyr\Utils\File::files('non-existing-dir'); // null
 Zaphyr\Utils\Files::files(__DIR__, true); // SplFileInfo[]
 ```
 
----
-
-### allFiles
+#### allFiles
 
 Returns all files in a given directory including all files in subdirectories.
 
@@ -652,9 +539,7 @@ Zaphyr\Utils\File::allFiles('non-existing-dir'); // null
 Zaphyr\Utils\File::allFiles(__DIR__, true); // SplFileInfo[]
 ```
 
----
-
-### directories
+#### directories
 
 Returns all directories inside a given directory.
 
@@ -666,9 +551,7 @@ Zaphyr\Utils\File::directories('non-existing-dir'); // null
 Zaphyr\Utils\File::directories(__DIR__, true); // SplFileInfo[]
 ```
 
----
-
-### getRequire
+#### getRequire
 
 Requires a file.
 
@@ -680,9 +563,7 @@ try {
 }
 ```
 
----
-
-### getRequireOnce
+#### getRequireOnce
 
 Requires a file once.
 
@@ -694,9 +575,7 @@ try {
 }
 ```
 
----
-
-### read
+#### read
 
 Reads the contents of a file.
 
@@ -708,9 +587,7 @@ try {
 }
 ```
 
----
-
-### put
+#### put
 
 Puts content inside a file.
 
@@ -724,9 +601,7 @@ It is also possible to acquire a lock on the file while writing to it. Simply pa
 Zaphyr\Utils\File::put(__FILE__, 'contents', true);
 ```
 
----
-
-### replace
+#### replace
 
 Replaces content inside a given file. If the file does not exist it will be created.
 
@@ -734,9 +609,7 @@ Replaces content inside a given file. If the file does not exist it will be crea
 Zaphyr\Utils\File::replace(__FILE__, 'contents');
 ```
 
----
-
-### prepend
+#### prepend
 
 Prepends content to a given file. If the file does not exist it will be created.
 
@@ -744,9 +617,7 @@ Prepends content to a given file. If the file does not exist it will be created.
 Zaphyr\Utils\File::prepend(__FILE__, 'contents');
 ```
 
----
-
-### append
+#### append
 
 Appends content to a given file. If the file does not exist it will be created.
 
@@ -754,9 +625,7 @@ Appends content to a given file. If the file does not exist it will be created.
 Zaphyr\Utils\File::append(__FILE__, 'contents');
 ```
 
----
-
-### delete
+#### delete
 
 Deletes a given file.
 
@@ -765,9 +634,7 @@ Zaphyr\Utils\File::delete('file'); // true
 Zaphyr\Utils\File::delete(['file1', 'file2']); // true
 ```
 
----
-
-### move
+#### move
 
 Moves a file to a given directory.
 
@@ -775,11 +642,9 @@ Moves a file to a given directory.
 Zaphyr\Utils\File::move('source-file', 'destination-target'); // true
 ```
 
----
+####  serialize
 
-###  serialize
-
-<span class="badge rounded-pill text-bg-primary">Available since v2.2.0</span>
+<span class="badge__available">Available since v2.2.0</span>
 
 Serializes the given data and writes it to a file.
 
@@ -787,11 +652,9 @@ Serializes the given data and writes it to a file.
 Zaphyr\Utils\File::serialize(__FILE__, ['foo' => 'bar']);
 ```
 
----
+#### unserialize
 
-### unserialize
-
-<span class="badge rounded-pill text-bg-primary">Available since v2.2.0</span>
+<span class="badge__available">Available since v2.2.0</span>
 
 Unserializes the content of a given file.
 
@@ -799,9 +662,7 @@ Unserializes the content of a given file.
 Zaphyr\Utils\File::unserialize(__FILE__);
 ```
 
----
-
-### copy
+#### copy
 
 Copies a file to a given directory.
 
@@ -809,9 +670,7 @@ Copies a file to a given directory.
 Zaphyr\Utils\File::copy('source-file', 'destination-target'); // true
 ```
 
----
-
-### createDirectory
+#### createDirectory
 
 Creates a new directory.
 
@@ -824,9 +683,7 @@ $force = false;
 Zaphyr\Utils\File::createDirectory($directory, $mode, $recursive, $force);
 ```
 
----
-
-### deleteDirectory
+#### deleteDirectory
 
 Deletes an existing directory.
 
@@ -837,9 +694,7 @@ $preserve = false;
 Zaphyr\Utils\File::deleteDirectory($directory, $preserve); // true
 ```
 
----
-
-### cleanDirectory
+#### cleanDirectory
 
 Removes all files and directories inside a given directory.
 
@@ -847,9 +702,7 @@ Removes all files and directories inside a given directory.
 Zaphyr\Utils\File::cleanDirectory('directory'); // true
 ```
 
----
-
-### moveDirectory
+#### moveDirectory
 
 Moves a directory to a given path.
 
@@ -857,9 +710,7 @@ Moves a directory to a given path.
 Zaphyr\Utils\File::moveDirectory('from', 'to');
 ```
 
----
-
-### copyDirectory
+#### copyDirectory
 
 Copies a directory to a given path.
 
@@ -869,15 +720,12 @@ $options = \FilesystemIterator::SKIP_DOTS;
 Zaphyr\Utils\File::copyDirectory('source-directory', 'target-destination-directory', $options);
 ```
 
----
 
 ## Filter
 
 Useful helper methods to filter for occurrences.
 
----
-
-### alpha
+#### alpha
 
 Returns only the alpha chars of a string.
 
@@ -891,9 +739,7 @@ The `alpha()` method also accepts array of strings.
 Zaphyr\Utils\Filter::alpha(['fo-0-o', '123asd']); // ['foo', 'asd']
 ```
 
----
-
-### alphanum
+#### alphanum
 
 Returns only the alphanum chars of a string.
 
@@ -907,9 +753,7 @@ This method also accepts array of strings.
 Zaphyr\Utils\Filter::alphanum(['foo-* 123']); // ['foo123']
 ```
 
----
-
-### base64
+#### base64
 
 Returns only the base64 chars of a string.
 
@@ -917,9 +761,7 @@ Returns only the base64 chars of a string.
 Zaphyr\Utils\Filter::base64('a8O2bGph*c2do ZHZiYX () Nua2zDtmzDpMOkYQ=='); // 'a8O2bGphc2doZHZiYXNua2zDtmzDpMOkYQ=='
 ```
 
----
-
-### digits
+#### digits
 
 Returns only digits of the given string.
 
@@ -927,9 +769,7 @@ Returns only digits of the given string.
 Zaphyr\Utils\Filter::digits('f1o2o3'); // 123
 ```
 
----
-
-### float
+#### float
 
 Smart converts any string to float with round.
 
@@ -938,9 +778,7 @@ Zaphyr\Utils\Filter::float('1.5123', 2); // 1.51
 Zaphyr\Utils\Filter::float('- 1 0'); // -10.0
 ```
 
----
-
-### int
+#### int
 
 Smart converts any string to int.
 
@@ -949,15 +787,11 @@ Zaphyr\Utils\Filter::int('+3'); // 3
 Zaphyr\Utils\Filter::int('- 1 0'); // -10
 ```
 
----
-
 ## Form
 
 The Form class contains useful helper to rapidly built HTML forms.
 
----
-
-### open
+#### open
 
 The `open()` method generates an opening `<form>` tag. By default, the method will generate a form that submits via the
 `POST` method.
@@ -1009,9 +843,7 @@ Zaphyr\Utils\Form::open(['data-foo' => 'bar'])
 // <form accept-charset="UTF-8" method="POST" data-foo="bar">
 ```
 
----
-
-### close
+#### close
 
 To close a form, you may use the `close()` method.
 
@@ -1020,9 +852,7 @@ Zaphyr\Utils\Form::close();
 // </form>
 ```
 
----
-
-### label
+#### label
 
 Returns a label for an input field. Keep in mind that after creating a label, any form element you create with a name
 matching the label name will automatically receive an `id` attribute matching the label name.
@@ -1058,9 +888,7 @@ Zaphyr\Utils\Form::label('foo', '<span>Bar</span>', [], false);
 // <label for="foo"><span>Bar</span></label>
 ```
 
----
-
-### input
+#### input
 
 The `input()` method generates an `<input>` element of the given type.
 
@@ -1086,9 +914,7 @@ Zaphyr\Utils\Form::input('text', 'name', null, ['class' => 'input']);
 // <input class="input" name="name" type="text">
 ```
 
----
-
-### text
+#### text
 
 Returns a `text` input field.
 
@@ -1105,9 +931,7 @@ echo Zaphyr\Utils\Form::text('name', 'John Doe', ['class' => 'input']);
 // <input class="input" name="name" type="text" value="John Doe">
 ```
 
----
-
-### password
+#### password
 
 Returns a `password` input field.
 
@@ -1123,9 +947,7 @@ echo Zaphyr\Utils\Form::password('secret', ['class' => 'input']);
 // <input class="input" name="secret" type="password" value="">
 ```
 
----
-
-### range
+#### range
 
 Returns a `range` input field.
 
@@ -1142,9 +964,7 @@ Zaphyr\Utils\Form::range('volume', 10, ['class' => 'input']);
 // <input class="input" name="volume" type="range" value="10">
 ```
 
----
-
-### hidden
+#### hidden
 
 Returns a `hidden` input field.
 
@@ -1161,9 +981,7 @@ Zaphyr\Utils\Form::hidden('user-id', '123', ['class' => 'input']);
 // <input class="input" name="user-id" type="hidden" value="123">
 ```
 
----
-
-### search
+#### search
 
 Returns a `search` input field.
 
@@ -1180,9 +998,7 @@ Zaphyr\Utils\Form::search('query', 'one', ['class' => 'input']);
 // <input class="input" name="query" type="search" value="one">
 ```
 
----
-
-### email
+#### email
 
 Returns an `email` input field.
 
@@ -1199,9 +1015,7 @@ Zaphyr\Utils\Form::email('mail', 'john@doe.com', ['class' => 'input']);
 // <input class="input" name="mail" type="email" value="john@doe.com">
 ```
 
----
-
-### tel
+#### tel
 
 Returns a `tel` input field.
 
@@ -1218,9 +1032,7 @@ Zaphyr\Utils\Form::tel('phone-number', '1234', ['class' => 'input']);
 // <input class="input" name="phone-number" type="tel" value="1234">
 ```
 
----
-
-### number
+#### number
 
 Returns a `number` input field.
 
@@ -1237,9 +1049,7 @@ Zaphyr\Utils\Form::Number('pin', '1234', ['class' => 'input']);
 // <input class="input" name="pin" type="number" value="1234">
 ```
 
----
-
-### date
+#### date
 
 Returns a `date` input field.
 
@@ -1258,9 +1068,7 @@ Zaphyr\Utils\Form::date('birthdate', new DateTime('2022-09-23'), ['class' => 'in
 // <input class="input" name="birthdate" type="date" value="2022-09-23">
 ```
 
----
-
-### datetime
+#### datetime
 
 Returns a `datetime` input field.
 
@@ -1279,9 +1087,7 @@ Zaphyr\Utils\Form::datetime('birthdate', new DateTime('2022-09-23'), ['class' =>
 // <input class="input" name="birthdate" type="datetime" value="2022-09-23T00:00:00+00:00">
 ```
 
----
-
-### datetimelocal
+#### datetimelocal
 
 Returns a `datetime-local` input field.
 
@@ -1300,9 +1106,7 @@ Zaphyr\Utils\Form::datetimeLocal('birthdate', new DateTime('2022-09-23'), ['clas
 // <input class="input" name="birthdate" type="datetime-local" value="2022-09-23T00:00">
 ```
 
----
-
-### time
+#### time
 
 Returns a `time` input field.
 
@@ -1321,9 +1125,7 @@ Zaphyr\Utils\Form::time('start-time', new DateTime('15:00'), ['class' => 'input'
 // <input class="input" name="start-time" type="time" value="15:00">
 ```
 
----
-
-### week
+#### week
 
 Returns a `week` input field.
 
@@ -1342,9 +1144,7 @@ Zaphyr\Utils\Form::week('start', new DateTime('2019-W32'), ['class' => 'input'])
 // <input class="input" name="start" type="week" value="2019-W32">
 ```
 
----
-
-### month
+#### month
 
 Returns a `month` input field.
 
@@ -1363,9 +1163,7 @@ Zaphyr\Utils\Form::month('start', new DateTime('2019-09'), ['class' => 'input'])
 // <input class="input" name="start" type="month" value="2019-09">
 ```
 
----
-
-### url
+#### url
 
 Returns a `url` input field.
 
@@ -1381,9 +1179,7 @@ Zaphyr\Utils\Form::url('website', 'https://localhost', ['class' => 'input']);
 // <input class="input" name="website" type="url" value="https://localhost">
 ```
 
----
-
-### file
+#### file
 
 Returns a `file` input field.
 
@@ -1399,9 +1195,7 @@ Zaphyr\Utils\Form::file('data', ['class' => 'input']);
 // <input class="input" name="data" type="file">
 ```
 
----
-
-### image
+#### image
 
 Returns a `image` input field.
 
@@ -1417,9 +1211,7 @@ Zaphyr\Utils\Form::image('avatar', 'https://localhost/foo.jpg', ['class' => 'inp
 // <input class="input" src="https://localhost/foo.jpg" name="avatar" type="image">
 ```
 
----
-
-### color
+#### color
 
 Returns a `color` input field.
 
@@ -1435,9 +1227,7 @@ Zaphyr\Utils\Form::color('background', '#ffffff', ['class' => 'input']);
 // <input class="input" name="background" type="color" value="#ffffff">
 ```
 
----
-
-### reset
+#### reset
 
 Returns a `reset` field.
 
@@ -1453,9 +1243,7 @@ Zaphyr\Utils\Form::reset('Reset form', ['class' => 'input']);
 // <input class="input" type="reset" value="Reset form">
 ```
 
----
-
-### submit
+#### submit
 
 Returns a `submit` field.
 
@@ -1471,9 +1259,7 @@ Zaphyr\Utils\Form::submit('Submit form', ['class' => 'input']);
 // <input class="input" type="submit" value="Submit form">
 ```
 
----
-
-### button
+#### button
 
 Returns a button field.
 
@@ -1489,9 +1275,7 @@ Zaphyr\Utils\Form::button('Submit', ['class' => 'input', 'type' => 'submit']);
 // <button class="input" type="submit">Submit</button>
 ```
 
----
-
-### checkbox
+#### checkbox
 
 Returns a checkbox field.
 
@@ -1507,9 +1291,7 @@ Zaphyr\Utils\Form::checkbox('terms-conditions', 'accept', true, ['class' => ['in
 // <input class="input" checked="checked" name="terms-conditions" type="checkbox" value="accept">
 ```
 
----
-
-### radio
+#### radio
 
 Returns a radio field.
 
@@ -1525,9 +1307,7 @@ Zaphyr\Utils\Form::radio('terms-conditions', 'accepted', true, ['class' => ['inp
 // <input class="input" checked="checked" name="terms-conditions" type="radio" value="accepted">
 ```
 
----
-
-### textarea
+#### textarea
 
 Returns a textarea field.
 
@@ -1567,9 +1347,7 @@ Zaphyr\Utils\Form::textarea('foo', '<span>Bar</span>', [], false);
 // '<textarea name="foo" cols="50" rows="10"><span>Bar</span></textarea>'
 ```
 
----
-
-### select
+#### select
 
 Returns a drop-down list.
 
@@ -1712,9 +1490,7 @@ echo Zaphyr\Utils\Form::select(
 // </select>
 ```
 
----
-
-### selectRange
+#### selectRange
 
 Returns a drop-down list with a selected range.
 
@@ -1764,9 +1540,7 @@ Zaphyr\Utils\Form::selectRange(
 // </select>
 ```
 
----
-
-### datalist
+#### datalist
 
 Returns a datalist field.
 
@@ -1780,15 +1554,11 @@ Zaphyr\Utils\Form::datalist('genders', ['male', 'female']);
 //  </datalist>
 ```
 
----
-
 ## HTML
 
 Contains a few HTML attributes methods.
 
----
-
-### attributes
+#### attributes
 
 Builds an HTML attribute string from an array.
 
@@ -1796,9 +1566,7 @@ Builds an HTML attribute string from an array.
 Zaphyr\Utils\HTML::attributes(['id' => 'foo', 'class' => ['bar', 'baz']]); // ' id="foo" class="bar baz"'
 ```
 
----
-
-### attributeElements
+#### attributeElements
 
 Builds a single HTML attribute element.
 
@@ -1807,15 +1575,11 @@ Zaphyr\Utils\HTML::attributeElement('id', 'foo'); // 'id="foo"'
 Zaphyr\Utils\HTML::attributeElement('class', ['bar', 'baz']); // 'class="bar baz"'
 ```
 
----
-
 ## Math
 
 Useful helper methods for calculating.
 
----
-
-### round
+#### round
 
 Rounds a given number up/down by a given precision.
 
@@ -1827,9 +1591,7 @@ $roundDown = Zaphyr\Utils\Math::ROUND_DOWN;
 Zaphyr\Utils\Math::round(1.61, $precision, $roundDown); // 1.6
 ```
 
----
-
-### average
+#### average
 
 Returns the average of a given number array.
 
@@ -1841,9 +1603,7 @@ $roundDown = Zaphyr\Utils\Math::ROUND_DOWN;
 Zaphyr\Utils\Math::average([1.2, 3.4, 5.6], $precision, $roundDown); // 3.4
 ```
 
----
-
-### percentage
+#### percentage
 
 Returns the percentage of a given number.
 
@@ -1857,9 +1617,7 @@ $roundDown = Zaphyr\Utils\Math::ROUND_DOWN;
 Zaphyr\Utils\Math::percentage(40.6, 20, $precision, $roundDown); // 8.1
 ```
 
----
-
-### ordinal
+#### ordinal
 
 Returns the ordinal of a given number.
 
@@ -1869,9 +1627,7 @@ Zaphyr\Utils\Math::ordinal(2); // '2nd'
 Zaphyr\Utils\Math::ordinal(223); // '223rd'
 ```
 
----
-
-### faculty
+#### faculty
 
 Returns the faculty of a given number.
 
@@ -1879,9 +1635,7 @@ Returns the faculty of a given number.
 Zaphyr\Utils\Math::faculty(10); // 3628800
 ```
 
----
-
-### combinations
+#### combinations
 
 Returns all possible combinations of an array of numbers.
 
@@ -1900,9 +1654,7 @@ Zaphyr\Utils\Math::combinations([1, 2], 3); // [1, 2]
 > [!WARNING]
 > This method can be very slow and should be used with care!
 
----
-
-### min
+#### min
 
 Returns the minimum required number.
 
@@ -1911,9 +1663,7 @@ Zaphyr\Utils\Math::min(5, 10); // 10
 Zaphyr\Utils\Math::min(20, 10); // 20
 ```
 
----
-
-### max
+#### max
 
 Returns the maximum required number.
 
@@ -1922,9 +1672,7 @@ Zaphyr\Utils\Math::max(5, 10); // 5
 Zaphyr\Utils\Math::max(10, 20); // 10
 ```
 
----
-
-### isInteger
+#### isInteger
 
 Determines whether the given number is an integer.
 
@@ -1933,9 +1681,7 @@ Zaphyr\Utils\Math::isInteger(1); // true
 Zaphyr\Utils\Math::isInteger(1.2); // false
 ```
 
----
-
-### isFloat
+#### isFloat
 
 Determines whether the given number is a float.
 
@@ -1944,9 +1690,7 @@ Zaphyr\Utils\Math::isFloat(1.2); // true
 Zaphyr\Utils\Math::isFloat('1 '); // false
 ```
 
----
-
-### isInRange
+#### isInRange
 
 Determines whether the given number is in a given range.
 
@@ -1959,9 +1703,7 @@ Zaphyr\Utils\Math::isInRange($number, $min, $max); // true
 Zaphyr\Utils\Math::isInRange($number, $min, 20); // false
 ```
 
----
-
-### isOutOfRange
+#### isOutOfRange
 
 Determines whether the given number is out of a given range.
 
@@ -1974,9 +1716,7 @@ Zaphyr\Utils\Math::isOutOfRange($number, $min, $max); // true
 Zaphyr\Utils\Math::isOutOfRange($number, $min, 100); // false
 ```
 
----
-
-### isEven
+#### isEven
 
 Determines whether the given number is even.
 
@@ -1986,9 +1726,7 @@ Zaphyr\Utils\Math::isEven(0.5); // true
 Zaphyr\Utils\Math::isEven(21); // false
 ```
 
----
-
-### isOdd
+#### isOdd
 
 Determines whether the given number is odd.
 
@@ -1998,9 +1736,7 @@ Zaphyr\Utils\Math::isOdd(21.25); // true
 Zaphyr\Utils\Math::isOdd(20); // false
 ```
 
----
-
-### isPositive
+#### isPositive
 
 Determines whether the given number is positive.
 
@@ -2011,9 +1747,7 @@ Zaphyr\Utils\Math::isPositive(0, false); // false
 Zaphyr\Utils\Math::isPositive(-1); // false
 ```
 
----
-
-### isNegative
+#### isNegative
 
 Determines whether the given number is negative.
 
@@ -2023,15 +1757,11 @@ Zaphyr\Utils\Math::isNegative(-0.5); // true
 Zaphyr\Utils\Math::isNegative(0); // false
 ```
 
----
-
 ## String
 
 Useful string helper methods.
 
----
-
-### toAscii
+#### toAscii
 
 Returns an ASCII version of the string. A set of non-ASCII characters are replaced with their closest ASCII counterparts,
 and the rest are removed by default.
@@ -2049,11 +1779,9 @@ Zaphyr\Utils\Str::toAscii('�Düsseldorf�', 'de'); // 'Duesseldorf'
 Zaphyr\Utils\Str::toAscii('�Düsseldorf�', 'en'); // 'Dusseldorf'
 ```
 
----
+#### isAscii
 
-### isAscii
-
-<span class="badge rounded-pill text-bg-primary">Available since v2.0.0</span>
+<span class="badge__available">Available since v2.0.0</span>
 
 Checks if a string is 7 bit ASCII.
 
@@ -2062,9 +1790,7 @@ Zaphyr\Utils\Str::isAscii('deja sss iiii'); // true
 Zaphyr\Utils\Str::isAscii('白'); // false
 ```
 
----
-
-### toArray
+#### toArray
 
 Converts a string to an array.
 
@@ -2072,9 +1798,7 @@ Converts a string to an array.
 Zaphyr\Utils\Str::toArray('Hello'); // ['H', 'e', 'l', 'l', 'o']
 ```
 
----
-
-### toBool
+#### toBool
 
 Returns the boolean representation of a string. Returns true for `"1"`, `"true"`, `"on"` and `"yes"`.
 Returns false otherwise.
@@ -2084,7 +1808,7 @@ Zaphyr\Utils\Str::toBool('true'); // true
 Zaphyr\Utils\Str::toBool('Off'); // false
 ```
 
-### beginsWith
+#### beginsWith
 
 Determines if the given string starts with a given substring.
 
@@ -2097,9 +1821,7 @@ Zaphyr\Utils\Str::beginsWith('Case sensitive', 'c'); // false
 Zaphyr\Utils\Str::beginsWith('Case sensitive', 'c', false); // true
 ```
 
----
-
-### endsWith
+#### endsWith
 
 Determines if a given string ends with a given substring.
 
@@ -2112,9 +1834,7 @@ Zaphyr\Utils\Str::endsWith('Case sensitive', 'E'); // false
 Zaphyr\Utils\Str::endsWith('Case sensitive', 'E', false); // true
 ```
 
----
-
-### contains
+#### contains
 
 Determines if a given string contains a given substring.
 
@@ -2127,9 +1847,7 @@ Zaphyr\Utils\Str::contains('Case sensitive', 'c'); // false
 Zaphyr\Utils\Str::contains('Case sensitive', 'c', false); // true
 ```
 
----
-
-### containsAll
+#### containsAll
 
 Determines if a given string contains all array substring.
 
@@ -2142,9 +1860,7 @@ Zaphyr\Utils\Str::containsAll('Case sensitive', ['c', 'S']); // false
 Zaphyr\Utils\Str::containsAll('Case sensitive', ['c', 'S'], false); // true
 ```
 
----
-
-### lower
+#### lower
 
 Converts the given string to lower-case.
 
@@ -2152,9 +1868,7 @@ Converts the given string to lower-case.
 Zaphyr\Utils\Str::lower('FOO'); // 'foo'
 ```
 
----
-
-### lowerFirst
+#### lowerFirst
 
 Converts the first character of a given string to lower-case.
 
@@ -2162,9 +1876,7 @@ Converts the first character of a given string to lower-case.
 Zaphyr\Utils\Str::lowerFirst('FOO'); // 'fOO'
 ```
 
----
-
-### upper
+#### upper
 
 Converts the given string top upper-case.
 
@@ -2172,9 +1884,7 @@ Converts the given string top upper-case.
 Zaphyr\Utils\Str::upper('foo'); // 'FOO'
 ```
 
----
-
-### upperFirst
+#### upperFirst
 
 Converts the first character of a given string to upper-case.
 
@@ -2182,9 +1892,7 @@ Converts the first character of a given string to upper-case.
 Zaphyr\Utils\Str::upperFirst('foo'); // 'Foo'
 ```
 
----
-
-### limit
+#### limit
 
 Limits the number of characters in a string.
 
@@ -2193,9 +1901,7 @@ Zaphyr\Utils\Str::limit('Foobar', 3); // 'Foo...'
 Zaphyr\Utils\Str::limit('Foobar', 3, ' ->'); // 'Foo ->'
 ```
 
----
-
-### limitSafe
+#### limitSafe
 
 Limits the length of a string, taking into account not cutting words.
 
@@ -2204,9 +1910,7 @@ Zaphyr\Utils\Str::limitSafe('Foo bar', 5); // 'Foo...'
 Zaphyr\Utils\Str::limitSafe('Foo bar', 5, ' ->')); // 'Foo ->'
 ```
 
----
-
-### firstPos
+#### firstPos
 
 Finds position of first occurrence of string in a string.
 
@@ -2222,9 +1926,7 @@ Zaphyr\Utils\Str::firstPos('Hello World, Hello You', 'Hello', 7); // 13
 Zaphyr\Utils\Str::firstPos('Hello World', 'world', 0, false); // 6
 ```
 
----
-
-### lastPos
+#### lastPos
 
 Finds position of last occurrence of a string in a string.
 
@@ -2240,9 +1942,7 @@ Zaphyr\Utils\Str::lastPos('Hello World, Hello You', 'Hello', 14); // false
 Zaphyr\Utils\Str::lastPos('Hello World, Hello You', 'hello', 0, false); // 13
 ```
 
----
-
-### replace
+#### replace
 
 Replaces part of a string by a matching pattern.
 
@@ -2250,9 +1950,7 @@ Replaces part of a string by a matching pattern.
 Zaphyr\Utils\Str::replace('foo', 'f[o]+', 'bar'); // 'bar'
 ```
 
----
-
-### stripWhitespace
+#### stripWhitespace
 
 Strips all whitespaces from the given string.
 
@@ -2260,9 +1958,7 @@ Strips all whitespaces from the given string.
 Zaphyr\Utils\Str::stripWhitespace('Foo bar'); // 'Foobar
 ```
 
----
-
-### insert
+#### insert
 
 Inserts a string inside a string at a given position.
 
@@ -2270,9 +1966,7 @@ Inserts a string inside a string at a given position.
 Zaphyr\Utils\Str::insert('foo', 'bar', 3); // 'Foobar'
 ```
 
----
-
-### equals
+#### equals
 
 Determines whether two strings are equal.
 
@@ -2285,9 +1979,7 @@ Zaphyr\Utils\Str::equals('Case sensitive', 'case sensitive'); // false
 Zaphyr\Utils\Str::equals('Case sensitive', 'case sensitive', false); // true
 ```
 
----
-
-### length
+#### length
 
 Returns the string length.
 
@@ -2295,9 +1987,7 @@ Returns the string length.
 Zaphyr\Utils\Str::length('Foo'); // 3
 ```
 
----
-
-### escape
+#### escape
 
 Escapes a string.
 
@@ -2305,9 +1995,7 @@ Escapes a string.
 Zaphyr\Utils\Str::escape('<h1>Hello world</h1>'); // '&lt;h1&gt;Hello world&lt;/h1&gt;'
 ```
 
----
-
-### title
+#### title
 
 Converts the given string to title case.
 
@@ -2315,9 +2003,7 @@ Converts the given string to title case.
 Zaphyr\Utils\Str::title('hello world'); // 'Hello World'
 ```
 
----
-
-### slug
+#### slug
 
 Generates a URL friendly "slug" from a given string.
 
@@ -2333,9 +2019,7 @@ passing “de” results in “äöü” mapping to “aeoeue” rather than “
 Zaphyr\Utils\Str::slug('Düsseldorf ist eine schöne Stadt', '_', 'de'); // 'duesseldorf_ist_eine_schoene_stadt'
 ```
 
----
-
-### studly
+#### studly
 
 Converts a value to studly caps case.
 
@@ -2344,9 +2028,7 @@ Zaphyr\Utils\Str::studly('Sho-ebo-x'); // 'ShoEboX'
 Zaphyr\Utils\Str::studly('Sho -_- ebo -_ - x')); // 'ShoEboX'
 ```
 
----
-
-### camel
+#### camel
 
 Converts a value to camel case.
 
@@ -2354,9 +2036,7 @@ Converts a value to camel case.
 Zaphyr\Utils\Str::camel('Hello world-whats up'); // 'helloWorldWhatsUp'
 ```
 
----
-
-### snake
+#### snake
 
 Converts a string to snake case.
 
@@ -2364,19 +2044,15 @@ Converts a string to snake case.
 Zaphyr\Utils\Str::snake('HelloWorld'); // 'hello_world'
 ```
 
----
-
 ## Template
 
-<span class="badge rounded-pill text-bg-primary">Available since v2.1.0</span>
+<span class="badge__available">Available since v2.1.0</span>
 
 The `Template` class provides an easy way to enrich templates with placeholders. The class is very limited and can
 only replace simple string placeholders. So this class is rather meant for small projects, simple template files or
 prototyping.
 
----
-
-### render
+#### render
 
 The template class provides only a `render()` function. This function takes the path to the template file and an
 array of placeholders and replaces them with the corresponding values inside the provided template file.
@@ -2396,15 +2072,11 @@ are wrapped with `%`.
 <p>Hello %name%</p>
 ```
 
----
-
 ## Timezone
 
 Useful helper class to work with time zones
 
----
-
-### getAllTimezones
+#### getAllTimezones
 
 Returns all available timezones.
 
@@ -2422,11 +2094,9 @@ Zaphyr\Utils\Timezone::getAllTimezones();
 > Since v2.0.0 this method returns the timezones grouped by its corresponding continent. Also, the timezones are now
 > generated dynamically via `\DateTimeZone::listIdentifiers()`
 
----
+#### getAllTimezonesAsJsonString
 
-### getAllTimezonesAsJsonString
-
-<span class="badge rounded-pill text-bg-primary">Available since v2.0.0</span>
+<span class="badge__available">Available since v2.0.0</span>
 
 Returns all available timezones as JSON string.
 
@@ -2435,11 +2105,9 @@ Zaphyr\Utils\Timezone::getAllTimezonesAsJsonString();
 // {'Africa': {'Abidjan': '(UTC+00:00) Abidjan' […] 'Wallis': '(UTC+12:00) Wallis'}}
 ```
 
----
+#### getTimezonesByContinent
 
-### getTimezonesByContinent
-
-<span class="badge rounded-pill text-bg-primary">Available since v2.0.0</span>
+<span class="badge__available">Available since v2.0.0</span>
 
 Returns a timezone array of the given continent.
 
@@ -2452,11 +2120,9 @@ Zaphyr\Utils\Timezone::getTimezonesByContinent('Europe');
 // ]
 ```
 
----
+#### getTimezone
 
-### getTimezone
-
-<span class="badge rounded-pill text-bg-primary">Available since v2.0.0</span>
+<span class="badge__available">Available since v2.0.0</span>
 
 Returns the timezone of the given continent and country.
 

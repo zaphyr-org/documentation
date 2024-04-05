@@ -1,13 +1,6 @@
 # Encrypt
 
-_A convenient interface for encrypting and decrypting text
-via OpenSSL using `AES-128` and `AES-256` encryption._
-
----
-
-[TOC]
-
----
+A convenient interface for encrypting and decrypting text via OpenSSL using `AES-128` and `AES-256` encryption.
 
 ## Installation
 
@@ -16,8 +9,6 @@ To get started, install the encrypt repository via the [Composer](https://getcom
 ```console
 composer require zaphyr-org/encrypt
 ```
-
----
 
 ## Configuration
 
@@ -44,8 +35,6 @@ new Zaphyr\Encrypt\Encrypt('OOQPAgC4tA7NanCiVCa1QN5BiRDpdQZR', 'AES-256-CBC');
 > [!WARNING]
 > Please do not use the keys shown in the examples in your application!
 
----
-
 ## Encrypting
 
 To encrypt values simply use the `encrypt()` method. If the value can not be properly encrypted, an `EncryptException`
@@ -68,8 +57,6 @@ If you want to encrypt values without serialization, you can use the `encryptStr
 ```php
 $encryptor->encryptString('My deepest secrets');
 ```
-
----
 
 ## Decrypting
 

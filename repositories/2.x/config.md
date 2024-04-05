@@ -1,18 +1,12 @@
 # Config
 
-_Load configuration files the easy way. This configuration loader supports
+Load configuration files the easy way. This configuration loader supports
 [PHP](https://en.wikipedia.org/wiki/PHP),
 [INI](https://en.wikipedia.org/wiki/INI_file),
 [JSON](https://en.wikipedia.org/wiki/JSON),
 [XML](https://en.wikipedia.org/wiki/XML),
 [YAML](https://en.wikipedia.org/wiki/YAML)
-and [NEON](https://ne-on.org/) file extensions._
-
----
-
-[TOC]
-
----
+and [NEON](https://ne-on.org/) file extensions.
 
 ## Installation
 
@@ -21,8 +15,6 @@ To get started, install the config repository via the [Composer](https://getcomp
 ```console
 composer require zaphyr-org/config
 ```
-
----
 
 ## Loading configuration files
 
@@ -45,7 +37,7 @@ $config = new Zaphyr\Config\Config();
 $config->load(['/config/path/file.yml']);
 ```
 
-> [!WARNING]
+> [!CAUTION]
 > Please do not include untrusted configuration files with `php` extension. It could contain and execute malicious code!
 
 ### Loading configuration files from a directory
@@ -71,8 +63,6 @@ $config->load(['./config/path']);
 
 > [!IMPORTANT]
 > It is not possible to load nested configuration file directories!
-
----
 
 ## Get configuration values
 
@@ -105,8 +95,6 @@ $config->get('app.version', '1.0.0'); // 1.0.0
 
 If a configuration value could not be found, the `get()` method automatically returns `null`.
 
----
-
 ## Determine whether a configuration value exists
 
 If you want to know if a configuration value exists, just use the `has()` method:
@@ -114,8 +102,6 @@ If you want to know if a configuration value exists, just use the `has()` method
 ```php
 $config->has('app.name'); // true
 ```
-
----
 
 ## Get all configuration values
 
@@ -125,8 +111,6 @@ You might also want to get all available configuration values as an array. This 
 ```php
 $config->toArray(); // ['app' => 'name']
 ```
-
----
 
 ## Configuration value replacers
 
@@ -201,8 +185,6 @@ config: '%custom:value%'
 > New replacer instances must always be added before the first use of the `load()` method.
 > Otherwise, the `load()` method throws an error because it does not yet know the new replacer!
 
----
-
 ## Custom configuration readers
 
 Even if this repository is already equipped with a lot of configurations file extension readers, it is still possible
@@ -244,11 +226,9 @@ Now you can use configuration files with your own file extension.
 > New reader instances must always be added before the first use of the `load()` method.
 > Otherwise, the `load()` method throws an error because it does not yet know the new reader!
 
----
-
 ## Dependency Injection
 
-<span class="badge rounded-pill text-bg-primary">Available since v2.2.0</span>
+<span class="badge__available">Available since v2.2.0</span>
 
 The config repository supports dependency injection, by using any [PSR-11](https://www.php-fig.org/psr/psr-11/)
 compatible DI container. The PSR-11 container instance can be set using the `setContainer` method:
@@ -260,8 +240,8 @@ $container->set(ServiceInterface::class, new Service());
 $config->setContainer($container);
 ```
 
-Now your constructor parameters for custom [readers](#content-custom-configuration-readers) or
-[replacers](#content-create-a-custom-replacer) are automatically resolved by the DI container:
+Now your constructor parameters for custom [readers](#custom-configuration-readers) or
+[replacers](#create-a-custom-replacer) are automatically resolved by the DI container:
 
 ```php
 class MySuperCustomReplacer implements Zaphyr\Config\Contracts\ReplacerInterface
@@ -285,4 +265,4 @@ class MySuperCustomReplacer implements Zaphyr\Config\Contracts\ReplacerInterface
 
 > [!NOTE]
 > This repository does **NOT** come with a PSR-11 implementation out of the box. For a PSR-11 implementation, check out
-> the [Container](/docs/1.x/repositories/container) repository.
+> the [Container](/docs/repositories/latest/container) repository.
