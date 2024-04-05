@@ -1,12 +1,6 @@
 # Container
 
-_Powerful auto wiring dependency injection container including [PSR-11](https://www.php-fig.org/psr/psr-11/)._
-
----
-
-[TOC]
-
----
+Powerful auto wiring dependency injection container including [PSR-11](https://www.php-fig.org/psr/psr-11/).
 
 ## Installation
 
@@ -15,8 +9,6 @@ To get started, install the container repository via the [Composer](https://getc
 ```console
 composer require zaphyr-org/container
 ```
-
----
 
 ## Basic usage
 
@@ -66,8 +58,6 @@ class constructor, you need to [instruct the container on how to resolve that in
 
 Additionally, when building larger applications with many dependencies, it is advisable to use
 [service providers](#service-providers).
-
----
 
 ## Binding
 
@@ -145,7 +135,7 @@ $container->isSingleton(BarInterface::class);
 
 ### Binding instances
 
-<span class="badge rounded-pill text-bg-primary">Available since v1.1.0</span>
+<span class="badge__available">Available since v1.1.0</span>
 
 The `bindInstance` method in the container binds a class or interface to an already existing instance. When a binding
 is resolved, the same object instance will be returned whenever the container is called again for that binding:
@@ -154,8 +144,6 @@ is resolved, the same object instance will be returned whenever the container is
 $container->bindInstance(BarInterface::class, new Bar());
 $container->get(BarInterface::class);
 ```
-
----
 
 ## Tagging
 
@@ -183,8 +171,6 @@ You can also add multiple tags:
 $container->tag(Foo::class, ['groupOne', 'groupTwo']);
 ```
 
----
-
 ## Extending Bindings
 
 The `extend` method allows for modifying resolved services. When a service is resolved, you can execute additional
@@ -199,8 +185,6 @@ $container->extend(Service::class, function (Service $service, Zaphyr\Container\
 
 $container->get(Service::class);
 ```
-
----
 
 ## Method injection
 
@@ -233,7 +217,6 @@ $container->call(function (Foo $foo) {
     // …
 });
 ```
----
 
 ## Service providers
 

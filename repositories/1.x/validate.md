@@ -1,16 +1,10 @@
-> [!WARNING]
-> You're browsing the documentation for an old version running php 7.x.
-> Consider upgrading to [v2.x](/docs/2.x/repositories/validate).
-
 # Validate
 
-_Easy to use, highly customizable validator._
+> [!WARNING]
+> You're browsing the documentation for an old version running php 7.x.
+> Consider upgrading to [v2.x](/docs/repositories/2.x/validate).
 
----
-
-[TOC]
-
----
+Easy to use, highly customizable validator.
 
 ## Installation
 
@@ -19,8 +13,6 @@ To get started, install the validate repository via the [Composer](https://getco
 ```console
 composer require zaphyr-org/validate
 ```
-
----
 
 ## Basic validation
 
@@ -63,8 +55,6 @@ In line 13 we finally check our input data against the validation rules.
 
 Last but not least, we call the `isValid()` method on line 15. This method returns `true` if all inputs are valid and
 `false` otherwise.
-
----
 
 ## Validation error messages
 
@@ -170,8 +160,6 @@ $validator->validate($inputs, $rules, [], $customFields);
 Congrats, you have renamed the `password_repeat` field e.g. Now the validation error message always shows
 "The password confirmation field is required" instead of "The password repeat field is required".
 
----
-
 ## Validation rules
 
 The ZAPHYR validation service comes already shipped with a huge number of validation rules. All validation rules are
@@ -237,8 +225,6 @@ $rules = [
 ];
 ```
 
----
-
 ## Custom validation rules
 
 If the supplied validation rules are not sufficient, you can create your custom validation rules. First of all you need
@@ -281,8 +267,6 @@ $validator->validate($inputs, $rules);
 > translation. For custom rules you have to define custom error messages as well. How you can store your own error
 > messages in translation files can be found in [here](#validation-error-messages-translations).
 
----
-
 ## Hooks
 
 Sometimes it can be helpful to perform a certain action immediately before or after validation. This validator service
@@ -307,8 +291,6 @@ $validator->addAfterValidationHook(function () {
     // add your after validation hook logic here
 });
 ```
-
----
 
 ## Validation error messages translations
 

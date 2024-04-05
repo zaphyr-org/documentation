@@ -1,13 +1,7 @@
 # HTTP Message
 
-_Lightweight and strict implementation of [PSR-7 HTTP Message](https://www.php-fig.org/psr/psr-7) including
-[PSR-17 HTTP Factories](https://www.php-fig.org/psr/psr-17)._
-
----
-
-[TOC]
-
----
+Lightweight and strict implementation of [PSR-7 HTTP Message](https://www.php-fig.org/psr/psr-7) including
+[PSR-17 HTTP Factories](https://www.php-fig.org/psr/psr-17).
 
 ## Installation
 
@@ -16,8 +10,6 @@ To get started, install the http-message repository via the [Composer](https://g
 ```console
 composer require zaphyr-org/http-message
 ```
-
----
 
 ## Basic usage
 
@@ -130,8 +122,6 @@ $response = $response->withHeader('Content-Type', 'text/plain');
 > [!NOTE]
 > Headers do not need to be added before data is written to the body!
 
----
-
 ## Stream
 
 The `Zaphyr\HttpMessage\Stream` class is a wrapper around [PHP streams](https://www.php.net/manual/en/book.stream.php)
@@ -161,8 +151,6 @@ $stream = new Zaphyr\HttpMessage\Stream('php://memory', 'wb+');
 - `Zaphyr\HttpMessage\ServerRequest` objects by default use a `php://input` stream set to read-only.
 - `Zaphyr\HttpMessage\Response` objects by default use a `php://memory` with a mode of `wb+,` allowing binary read/write access.
 
----
-
 ## URI
 
 The `Zaphyr\HttpMessage\Uri` class is meant to represent URIs according to
@@ -175,8 +163,6 @@ The `Zaphyr\HttpMessage\Uri` object only supports the `http` and `https` schemes
 ```php
 $uri = new Zaphyr\HttpMessage\Uri("http://www.example.com/foo");
 ```
-
----
 
 ## UploadedFile
 
@@ -194,8 +180,6 @@ $uploadedFile = new Zaphyr\HttpMessage\UploadedFile(
     clientMediaType: 'text/plain'
 );
 ```
-
----
 
 ## Factories
 

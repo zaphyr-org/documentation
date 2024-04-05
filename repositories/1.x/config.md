@@ -1,17 +1,11 @@
-> [!WARNING]
-> You're browsing the documentation for an old version running php 7.x.
-> Consider upgrading to [v2.x](/docs/2.x/repositories/config).
-
 # Config
 
-_Load configuration files the easy way. This configuration loader supports `PHP`, `INI`, `JSON`, `XML` and
-`YAML` file extensions._
+> [!WARNING]
+> You're browsing the documentation for an old version running php 7.x.
+> Consider upgrading to [v2.x](/docs/repositories/2.x/config).
 
----
-
-[TOC]
-
----
+Load configuration files the easy way. This configuration loader supports `PHP`, `INI`, `JSON`, `XML` and
+`YAML` file extensions.
 
 ## Installation
 
@@ -20,8 +14,6 @@ To get started, install the config repository via the [Composer](https://getcomp
 ```console
 composer require zaphyr-org/config
 ```
-
----
 
 ## Loading configuration files
 
@@ -71,8 +63,6 @@ $config->load(['./config/path']);
 > [!IMPORTANT]
 > Currently, it is not possible to load nested configuration file directories!
 
----
-
 ## Get configuration values
 
 Getting configuration values can be done via the `get()` method.
@@ -104,8 +94,6 @@ $config->get('app.version', '1.0.0'); // 1.0.0
 
 If a configuration value could not be found, the `get()` method automatically returns `null`.
 
----
-
 ## Determine whether a configuration value exists
 
 If you want to know if a configuration value exists, just use the `has()` method:
@@ -113,8 +101,6 @@ If you want to know if a configuration value exists, just use the `has()` method
 ```php
 $config->has('app.name'); // true
 ```
-
----
 
 ### Get all configuration values
 
@@ -124,8 +110,6 @@ You might also want to get all available configuration values as an array. This 
 ```php
 $config->toArray(); // ['app' => 'name']
 ```
-
----
 
 ## Configuration value replacers
 
@@ -199,8 +183,6 @@ config: '%custom:value%'
 > [!NOTE]
 > New replacer instances must always be added before the first use of the `load()` method.
 > Otherwise, the `load()` method throws an error because it does not yet know the new replacer!
-
----
 
 ## Custom configuration readers
 

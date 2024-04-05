@@ -1,12 +1,6 @@
 # HTTP Emitter
 
-_Emits [PSR-7](https://www.php-fig.org/psr/psr-7) responses to the PHP Server API._
-
----
-
-[TOC]
-
----
+Emits [PSR-7](https://www.php-fig.org/psr/psr-7) responses to the PHP Server API.
 
 ## Installation
 
@@ -15,8 +9,6 @@ To get started, install the http-emitter repository via the [Composer](https://g
 ```console
 composer require zaphyr-org/http-emitter
 ```
-
----
 
 ## Emitters
 

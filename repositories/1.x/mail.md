@@ -1,12 +1,6 @@
 # Mail
 
-_A mail API over the popular Symfony Mailer._
-
----
-
-[TOC]
-
----
+A mail API over the popular Symfony Mailer.
 
 ## Installation
 
@@ -15,8 +9,6 @@ To get started, install the mail repository via the [Composer](https://getcompos
 ```console
 composer require zaphyr-org/mail
 ```
-
----
 
 ## Configuration
 
@@ -32,8 +24,6 @@ $symfonyMailer = new Symfony\Component\Mailer\Mailer($symfonyTransport);
 
 $mailer = new Zaphyr\Mail\Mailer($symfonyMailer);
 ```
-
----
 
 ## Send emails with closure
 
@@ -87,8 +77,6 @@ $mailer->send(
 );
 ```
 
----
-
 ## Send emails with mailable object
 
 Another way to send emails is to use mailable objects. Mailable objects are classes that extend the
@@ -137,13 +125,11 @@ To send the email, we simply pass the mailable object to the `send()` method:
 $mailer->send(new WelcomeMail('john@doe.com', 'John Doe'));
 ```
 
----
-
 ## Templates
 
 The mail service uses a lightweight, easy-to-use template engine by default. All the template engine can do is read
 template files and replace the placeholders in them. You can read more about the template engine
-[here](/docs/repositories/latest/utils#render).
+[here](/docs/repositories/latest/utils#template).
 
 A simple html email template looks like this:
 
@@ -213,8 +199,6 @@ $mailer->send(
     //…
 );
 ```
-
----
 
 ## Always methods
 

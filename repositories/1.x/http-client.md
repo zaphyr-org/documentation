@@ -1,12 +1,6 @@
-# HTTP Client
+1# HTTP Client
 
-_HTTP cURL client based on [PSR-18](https://www.php-fig.org/psr/psr-18)._
-
----
-
-[TOC]
-
----
+HTTP cURL client based on [PSR-18](https://www.php-fig.org/psr/psr-18).
 
 ## Installation
 
@@ -15,8 +9,6 @@ To get started, install the http-client repository via the [Composer](https://ge
 ```console
 composer require zaphyr-org/http-client
 ```
-
----
 
 ## Configuration
 

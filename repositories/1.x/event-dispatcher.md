@@ -1,12 +1,6 @@
 # Event Dispatcher
 
-_An efficient [PSR-14](https://www.php-fig.org/psr/psr-14/) event dispatcher._
-
----
-
-[TOC]
-
----
+An efficient [PSR-14](https://www.php-fig.org/psr/psr-14/) event dispatcher.
 
 ## Installation
 
@@ -15,8 +9,6 @@ To get started, install the event-dispatcher repository via the [Composer](https
 ```console
 composer require zaphyr-org/event-dispatcher
 ```
-
----
 
 ## Basic usage
 
@@ -52,8 +44,6 @@ will be called each time the event is dispatched. We then created a new `Zaphyr\
 and passed the `ListenerProvider` instance to the constructor. Finally, we dispatched our example event by calling
 the `dispatch` method on the `EventDispatcher` instance. We will now take a closer look at the `ListenerProvider` and
 `EventDispatcher` classes.
-
----
 
 ## Subscribe to events
 
@@ -125,8 +115,6 @@ $listenerProvider->addListener(
     Zaphyr\EventDispatcher\ListenerProvider::PRIORITY_HIGH
 );
 ```
-
----
 
 ## Dispatch events
 

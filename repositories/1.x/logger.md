@@ -1,17 +1,11 @@
-> [!WARNING]
-> You're browsing the documentation for an old version running php 7.x.
-> Consider upgrading to [v2.x](/docs/2.x/repositories/logger).
-
 # Logger
 
-_You want to know what's happening "under the hood" of your application? ZAPHYR provides a robust
-[PSR-3](https://www.php-fig.org/psr/psr-3/) logging service._
+> [!WARNING]
+> You're browsing the documentation for an old version running php 7.x.
+> Consider upgrading to [v2.x](/docs/repositories/2.x/logger).
 
----
-
-[TOC]
-
----
+You want to know what's happening "under the hood" of your application? ZAPHYR provides a robust
+[PSR-3](https://www.php-fig.org/psr/psr-3/) logging service.
 
 ## Installation
 
@@ -20,8 +14,6 @@ To get started, install the logger repository via the [Composer](https://getcomp
 ```console
 composer require zaphyr-org/logger
 ```
-
----
 
 ## Configuration
 
@@ -104,8 +96,6 @@ $prodLogger = $logManager->logger('prod'); // Uses the defined "prod" log channe
 > possible to use custom log handlers without extending the `LogManager`. However, such a functionality is planned
 > and will be implemented in the near future!
 
----
-
 ## Logging
 
 When it comes to logging in your application, this logging service offers you different log levels
@@ -168,8 +158,6 @@ levels are: `emergency`, `alert`, `critical`, `error`, `warning`, `notice`, `inf
 | `$logger->notice()`    | Normal but significant condition |
 | `$logger->info()`      | Informational messages           |
 | `$logger->debug()`     | Debug-level messages             |
-
----
 
 ## Handlers
 
@@ -318,8 +306,6 @@ $channels = [
 
 $logManager = new Zapyhr\Logger\LogManager($defaultChannel, $channels);
 ```
-
----
 
 ## Formatters
 

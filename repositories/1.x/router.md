@@ -1,15 +1,9 @@
 # Router
 
-_Robust [PSR-7](https://www.php-fig.org/psr/psr-7) router supporting
+Robust [PSR-7](https://www.php-fig.org/psr/psr-7) router supporting
 [attribute-based](https://www.php.net/manual/en/language.attributes.overview.php) routing, complete with
 [PSR-15](https://www.php-fig.org/psr/psr-15/) middleware and [PSR-11](https://www.php-fig.org/psr/psr-11) container
-support, all built upon the foundation of [FastRoute](https://github.com/nikic/FastRoute)._
-
----
-
-[TOC]
-
----
+support, all built upon the foundation of [FastRoute](https://github.com/nikic/FastRoute).
 
 ## Installation
 
@@ -18,8 +12,6 @@ To get started, install the router repository via the [Composer](https://getcomp
 ```console
 composer require zaphyr-org/router
 ```
-
----
 
 ## Basic usage
 
@@ -64,8 +56,6 @@ can customize the error handling logic in these catch blocks according to your a
 > [!NOTE]
 > This repository does **NOT** come with a PSR-7 implementation out of the box. For a PSR-7 implementation, check out the
 > [HTTP Message](/docs/repositories/latest/http-message) repository.
-
----
 
 ## Route callables
 
@@ -169,8 +159,6 @@ class MyController
 
 $router->add('/', ['GET'], MyController::class);
 ```
-
----
 
 ## Routes
 
@@ -459,8 +447,6 @@ $router->get('/user/{id}', 'UserController@showAction')->setName('user.show');
 $router->getPathFromName('user.show', ['id' => 1]); // "/user/1"
 ```
 
----
-
 ## Groups
 
 Groups serve as a valuable means of structuring and organizing your route definitions. They afford us the ability to
@@ -575,8 +561,6 @@ class UserController
 
 The group will only match if the incoming request's port matches the specified port
 (`GET: https://example.com:8080/users/all`).
-
----
 
 ## Middleware
 
@@ -698,8 +682,6 @@ class MyMiddleware implements Psr\Http\Server\MiddlewareInterface
     }
 }
 ```
-
----
 
 ## Dependency injection
 

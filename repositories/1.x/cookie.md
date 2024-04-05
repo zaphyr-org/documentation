@@ -1,12 +1,6 @@
 # Cookie
 
-_Small repository for handling cookies._
-
----
-
-[TOC]
-
----
+Small repository for handling cookies.
 
 ## Installation
 
@@ -16,11 +10,9 @@ To get started, install the cookie repository via the [Composer](https://getcomp
 composer require zaphyr-org/cookie
 ```
 
----
-
 ## Cookie
 
-The cookie repository is an object-oriented alternative to the `$_COOKIE` superglobal, which simplifies the handling or
+The cookie repository is an object-oriented alternative to the `$_COOKIE` super global, which simplifies the handling or
 testing of cookies in applications or frameworks. It provides a simple way to create a cookie object and to get the
 cookie string.
 
@@ -70,8 +62,6 @@ $cookie->isHttpOnly();
 $cookie->isRaw();
 $cookie->getSameSite();
 ````
-
----
 
 ## CookieManager
 

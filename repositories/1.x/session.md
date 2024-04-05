@@ -1,12 +1,6 @@
 # Session
 
-_A session handler repository for maintaining user state across multiple requests._
-
----
-
-[TOC]
-
----
+A session handler repository for maintaining user state across multiple requests.
 
 ## Installation
 
@@ -16,14 +10,12 @@ To get started, install the session repository via the [Composer](https://getcom
 composer require zaphyr-org/session
 ```
 
----
-
 ## Session
 
 HTTP is a stateless protocol, which means that the server does not keep any information (state) between two requests.
 This is a problem when you want to keep track of a user's activity on your website. For example, if you want to check
 if a user is logged in, you need to keep track of that somehow. This is, where the session repository comes into play.
-The session repository does not store session data in the `$_SESSION` superglobal. Instead, the session repository uses
+The session repository does not store session data in the `$_SESSION` super global. Instead, the session repository uses
 custom [session handlers](#session-handlers) to store the session data.
 
 ### Create a session
@@ -319,8 +311,6 @@ $handler = new Zaphyr\Session\Handler\FileHandler('/path/to/storage');
 $session = new Zaphyr\Session\EncryptedSession('encrypted_session', $handler, $encryptor);
 ```
 
----
-
 ## Session handlers
 
 The session handlers define how the session data is stored and retrieved. The session repository comes shipped with a
@@ -417,7 +407,7 @@ $handler = new Zaphyr\Session\Handler\DatabaseHandler($connection, minutes: 120)
 
 ### Array session handler
 
-<span class="badge rounded-pill text-bg-primary">Available since v1.1.0</span>
+<span class="badge__available">Available since v1.1.0</span>
 
 The session repository also comes shipped with an array session handler, which stores the session data in an array and
 prevent the session data from being persisted. The array session handler is useful for testing purposes:
@@ -484,8 +474,6 @@ class MyCustomHandler implements SessionHandlerInterface
     }
 }
 ```
-
----
 
 ## Session manager
 
