@@ -1,4 +1,4 @@
-1# HTTP Client
+# HTTP Client
 
 HTTP cURL client based on [PSR-18](https://www.php-fig.org/psr/psr-18).
 
