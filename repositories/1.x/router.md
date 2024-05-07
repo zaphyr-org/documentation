@@ -447,6 +447,32 @@ $router->get('/user/{id}', 'UserController@showAction')->setName('user.show');
 $router->getPathFromName('user.show', ['id' => 1]); // "/user/1"
 ```
 
+### List routes
+
+<span class="badge__available">Available since v1.2.0</span>
+
+You may want to list all the routes that are defined in the router. The `getRoutes` method returns an array of all
+defined route instances:
+
+```php
+$router->getRoutes();
+```
+
+### Route callable name
+
+<span class="badge__available">Available since v1.3.0</span>
+
+The `getCallableName` method can be used to retrieve the callable name of a route. The callable name is a string that
+contains the class name and method name of the route callable:
+
+```php
+$router->get('/user/{id}', [UserController::class, 'showAction']);
+
+foreach($router->getRoutes() as $route) {
+    echo $route->getCallableName(); // "UserController@showAction"
+}
+```
+
 ## Groups
 
 Groups serve as a valuable means of structuring and organizing your route definitions. They afford us the ability to
