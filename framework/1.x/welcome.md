@@ -1,7 +1,7 @@
 # Welcome
 
 > [!WARNING]
-> The framework is in beta and is **not ready for production use yet!**
+> The framework is in alpha state and is **not ready for production use yet!**
 > We are actively working on it and will release a stable version soon.
 
 ZAPHYR is a modern, lightweight, and fast PHP framework that is designed to help you build web applications quickly
