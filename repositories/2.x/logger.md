@@ -168,6 +168,17 @@ The following intervals can be used to create log files:
 | `Zaphyr\Logger\Handlers\RotateHandler::INTERVAL_MONTH` | Creates a new log file every month  |
 | `Zaphyr\Logger\Handlers\RotateHandler::INTERVAL_YEAR`  | Creates a new log file every year   |
 
+### NoopHandler
+
+<span class="badge__available">Available since v2.1.0</span>
+
+The `Zaphyr\Logger\Handlers\NoopHandler` is a special handler that does nothing. It is useful for testing purposes or
+if you want to disable logging in certain environments:
+
+```php
+$noopHandler = new Zaphyr\Logger\Handlers\NoopHandler();
+```
+
 ### Usage of multiple handlers
 
 As you may have seen in the previous examples, multiple log handlers can be triggered simultaneously as soon as a log
