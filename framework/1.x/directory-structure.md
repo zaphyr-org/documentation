@@ -30,7 +30,7 @@ The `resources` directory contains all of your application's resources, includin
 ## The `src/` directory
 
 This is where the magic happens! The `src` directory contains all the core code for your application. This directory is
-namespaced under `App` and is [autoloaded by Composer.](https://getcomposer.org/doc/01-basic-usage.md#autoloading).
+namespaced under `App` and is [autoloaded by Composer](https://getcomposer.org/doc/01-basic-usage.md#autoloading).
 
 ### The `Controllers/` directory
 
