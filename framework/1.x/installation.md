@@ -49,7 +49,7 @@ APP_URL=http://localhost:8000
 ```
 
 The `.env` file stores important configuration settings, such as environment variables. You can read more about it in
-the [configuration](/docs/framework/latest/configuration) section.
+the [configuration](/docs/framework/latest/configuration#environment-variables) section.
 
 To start the [built-in PHP web server](https://www.php.net/manual/features.commandline.webserver.php) from the root of
 your project, run the following command:
@@ -59,9 +59,6 @@ php -S localhost:8000 -t public
 ```
 
 The application is now running on `http://localhost:8000`. You can access it in your browser by visiting the URL.
-
-> [!WARNING]
-> The PHP built-in web server is intended for development purposes only and is not suitable for production use.
 
 > [!TIP]
 > For local development, we recommend using [ddev](https://ddev.readthedocs.io/en/stable/), a Docker-based environment
