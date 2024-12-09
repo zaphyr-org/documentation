@@ -61,8 +61,37 @@ $config->load(['./config/path']);
 > Files are parsed and loaded depending on the file extension. When loading a directory,
 > the path is `glob`ed and files are loaded in by name alphabetically.
 
-> [!IMPORTANT]
-> It is not possible to load nested configuration file directories!
+<span class="badge__available">Available since v2.3.0</span>
+
+Since v2.3.0 it is also possible to load configuration files from a directory recursively. Let's say you have the
+following directory structure:
+
+```plaintext
+/config/path
+    /subdir
+        file.yml
+        /subsubdir
+            file.yml
+    app.yml
+```
+
+You can load all configuration files from the `/config/path` directory recursively like this:
+
+```php
+$config = new Zaphyr\Config\Config(['./config/path']);
+// or
+$config->load(['./config/path']);
+```
+
+The configuration files are now loaded as follows:
+
+```php
+$config->get('app'); // app.yml
+$config->get('subdir.file'); // subdir/file.yml
+$config->get('subdir.subsubdir.file'); // subdir/subsubdir/file.yml
+```
+
+As you can see, the subdirectory name acts as the "namespace" for calling the configuration values.
 
 ## Get configuration values
 
@@ -106,10 +135,10 @@ $config->has('app.name'); // true
 ## Get all configuration values
 
 You might also want to get all available configuration values as an array. This is possible with the
-`toArray()` method:
+`getItems()` method:
 
 ```php
-$config->toArray(); // ['app' => 'name']
+$config->getItems(); // ['app' => 'name']
 ```
 
 ## Configuration value replacers
