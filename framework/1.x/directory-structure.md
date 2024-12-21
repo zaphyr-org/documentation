@@ -92,6 +92,7 @@ The `Zaphyr\Framework\Application` class is responsible for bootstrapping the ap
 following methods to change the default directory structure:
 
 - **setAppPath** - Sets the path to the `app` directory.
+- **setBinPath** - Sets the path to the `bin` directory.
 - **setConfigPath** - Sets the path to the `config` directory.
 - **setPublicPath** - Sets the path to the `public` directory.
 - **setResourcesPath** - Sets the path to the `resources` directory.
@@ -101,6 +102,7 @@ Each of the above setter methods also has a corresponding getter method to retri
 
 ```php
 $application->getAppPath();
+$application->getBinPath();
 $application->getConfigPath();
 $application->getPublicPath();
 $application->getResourcesPath();
