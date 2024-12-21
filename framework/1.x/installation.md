@@ -27,7 +27,7 @@ Before you start, ensure the following are installed on your system:
 To create a new application, open a terminal (either Command Prompt or Terminal app, depending on your OS) and run the
 following Composer command from the directory where you want to install your application:
 
-```console
+```bash
 composer create-project zaphyr-org/app my-app
 ```
 
@@ -38,7 +38,7 @@ Feel free to replace `my-app` with your desired application name.
 
 After creating the application, navigate to your application directory (`my-app`):
 
-```console
+```bash
 cd my-app
 ```
 
@@ -54,7 +54,7 @@ the [configuration](/docs/framework/latest/configuration#environment-variables) 
 To start the [built-in PHP web server](https://www.php.net/manual/features.commandline.webserver.php) from the root of
 your project, run the following command:
 
-```console
+```bash
 php -S localhost:8000 -t public
 ```
 
