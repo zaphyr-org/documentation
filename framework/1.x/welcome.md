@@ -16,24 +16,23 @@ gradually developed into a solid library.
 - **Lightweight**: The framework is designed to be lightweight and fast.
 - **Easy to use**: ZAPHYR provides a simple and easy-to-use API for developers.
 - **Modular**: The framework is modular and allows you to use only the components you need.
-- **Extensible**: ZAPHYR is extensible and allows you to add your own components and extend the framework.
+- **Extensible**: ZAPHYR is extensible and allows you to add your own plugins and extend the framework.
 - **Secure**: ZAPHYR is secure and follows best practices for web application security.
 - **Well-documented**: ZAPHYR is well-documented and comes with a comprehensive user guide.
 - **Open-source**: ZAPHYR is open-source and free to use.
 - **Tested**: ZAPHYR is tested and comes with a suite of unit tests to ensure stability and reliability.
 
-### Packages
+### Plugins
 
-The ZAPHYR framework is composed of several packages that provide different features and functionality. Designed to work
-together seamlessly, these packages offer a complete solution for building web applications. It is also possible to
-create your own packages and extend the framework with custom functionality.
+The ZAPHYR framework is composed of several plugins that provide different features and functionality. Designed to work
+together seamlessly, these plugins offer a complete solution for building web applications. It is also possible to
+create your own plugins and extend the framework with custom functionality.
 
 ### Repositories
 
-The framework's repositories supply core functionalities and house its packages. They are the building blocks of the
-framework and provide the basic functionality that is needed to build web applications. Repositories can also be used
-as standalone components and integrated into other projects.
-
+The framework's repositories are the building blocks of the framework and provide the basic functionality that is
+needed to build web applications. Repositories can also be used as standalone components and integrated into other 
+projects.
 
 ## How to read the documentation
 
