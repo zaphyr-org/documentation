@@ -9,7 +9,7 @@ support, all built upon the foundation of [FastRoute](https://github.com/nikic/F
 
 To get started, install the router repository via the [Composer](https://getcomposer.org/) package manager:
 
-```console
+```bash
 composer require zaphyr-org/router
 ```
 
@@ -601,7 +601,10 @@ A good example middleware is a middleware that checks if the user is authenticat
 ```php
 class AuthMiddleware implements Psr\Http\Server\MiddlewareInterface
 {
-    public function process(Psr\Http\Message\ServerRequestInterface $request, Psr\Http\Server\RequestHandlerInterface $handler): Psr\Http\Message\ResponseInterface
+    public function process(
+    Psr\Http\Message\ServerRequestInterface $request,
+    Psr\Http\Server\RequestHandlerInterface $handler
+    ): Psr\Http\Message\ResponseInterface
     {
         // If the user is not authenticated, return a 401 response.
         if ($isAuthenticated === false) {

@@ -6,7 +6,7 @@ A collection of useful helper classes, which make a developer's workday a little
 
 To get started, install the utils repository via the [Composer](https://getcomposer.org/) package manager:
 
-```console
+```bash
 composer require zaphyr-org/utils
 ```
 

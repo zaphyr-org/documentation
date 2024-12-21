@@ -11,7 +11,7 @@ Load configuration files the easy way. This configuration loader supports `PHP`,
 
 To get started, install the config repository via the [Composer](https://getcomposer.org/) package manager:
 
-```console
+```bash
 composer require zaphyr-org/config
 ```
 

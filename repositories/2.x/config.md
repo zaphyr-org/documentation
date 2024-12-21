@@ -12,7 +12,7 @@ and [NEON](https://ne-on.org/) file extensions.
 
 To get started, install the config repository via the [Composer](https://getcomposer.org/) package manager:
 
-```console
+```bash
 composer require zaphyr-org/config
 ```
 
@@ -66,14 +66,12 @@ $config->load(['./config/path']);
 Since v2.3.0 it is also possible to load configuration files from a directory recursively. Let's say you have the
 following directory structure:
 
-```plaintext
-/config/path
-    /subdir
-        file.yml
-        /subsubdir
-            file.yml
-    app.yml
-```
+<pre><code class="language-treeview">
+config/path/
+|-- app.yaml
+`-- plugins/
+    `-- acme.yaml
+</code></pre>
 
 You can load all configuration files from the `/config/path` directory recursively like this:
 
@@ -86,9 +84,8 @@ $config->load(['./config/path']);
 The configuration files are now loaded as follows:
 
 ```php
-$config->get('app'); // app.yml
-$config->get('subdir.file'); // subdir/file.yml
-$config->get('subdir.subsubdir.file'); // subdir/subsubdir/file.yml
+$config->get('app'); // config/path/app.yaml
+$config->get('plugins.acme'); // config/path/plugins/acme.yaml
 ```
 
 As you can see, the subdirectory name acts as the "namespace" for calling the configuration values.
@@ -101,7 +98,7 @@ Let's say you have an `app.yml` configuration file in your `/config/path` direct
 and the contents of your file looks like this:
 
 ```yaml
-# /config/path/app.yml
+# /config/path/app.yaml
 name: "My awesome app"
 ```
 
@@ -160,7 +157,7 @@ Now you want to access the `env` values in your `database.yml` inside your `/con
 follows:
 
 ```yaml
-# /config/path/database.yml
+# /config/path/database.yaml
 mysql:
     user: '%env:DB_USER%'
     password: '%env:DB_PASS%'

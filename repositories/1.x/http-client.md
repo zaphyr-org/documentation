@@ -6,7 +6,7 @@ HTTP cURL client based on [PSR-18](https://www.php-fig.org/psr/psr-18).
 
 To get started, install the http-client repository via the [Composer](https://getcomposer.org/) package manager:
 
-```console
+```bash
 composer require zaphyr-org/http-client
 ```
 
@@ -68,5 +68,5 @@ try {
 ```
 
 > [!NOTE]
->This repository does **NOT** come with a PSR-17 implementation out of the box. For a PSR-17 implementation, check out
+> This repository does **NOT** come with a PSR-17 implementation out of the box. For a PSR-17 implementation, check out
 the [HTTP Message](/docs/repositories/latest/http-message#factories) repository.

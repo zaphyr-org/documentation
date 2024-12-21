@@ -6,7 +6,7 @@ A session handler repository for maintaining user state across multiple requests
 
 To get started, install the session repository via the [Composer](https://getcomposer.org/) package manager:
 
-```console
+```bash
 composer require zaphyr-org/session
 ```
 

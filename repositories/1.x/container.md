@@ -6,7 +6,7 @@ Powerful auto wiring dependency injection container including [PSR-11](https://w
 
 To get started, install the container repository via the [Composer](https://getcomposer.org/) package manager:
 
-```console
+```bash
 composer require zaphyr-org/container
 ```
 

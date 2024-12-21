@@ -6,7 +6,7 @@ An efficient [PSR-14](https://www.php-fig.org/psr/psr-14/) event dispatcher.
 
 To get started, install the event-dispatcher repository via the [Composer](https://getcomposer.org/) package manager:
 
-```console
+```bash
 composer require zaphyr-org/event-dispatcher
 ```
 

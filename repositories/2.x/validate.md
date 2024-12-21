@@ -6,7 +6,7 @@ Easy to use, highly customizable validator.
 
 To get started, install the validate repository via the [Composer](https://getcomposer.org/) package manager:
 
-```console
+```bash
 composer require zaphyr-org/validate
 ```
 

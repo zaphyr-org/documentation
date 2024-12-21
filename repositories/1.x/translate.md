@@ -10,7 +10,7 @@ A simple translator to serve your applications in multiple languages.
 
 To get started, install the translate repository via the [Composer](https://getcomposer.org/) package manager:
 
-```console
+```bash
 composer require zaphyr-org/translate
 ```
 
@@ -23,14 +23,13 @@ However, before you start translating your application, you need to configure yo
 
 Let's say you put your translation strings in a `resources/lang` directory. Then each language needs its own subdirectory:
 
-```bash
-+-- resources
-|   +-- lang
-|   |   +-- en
-|   |   |   +-- app.php
-|   |   +-- pl
-|   |   |   +-- app.php
-```
+<pre><code class="language-treeview">
+resources/lang/
+|-- en/
+|   `-- app.php
+`-- pl/
+    `-- app.php
+</code></pre>
 
 Within your translation files you define an array of keyed translation strings:
 

@@ -7,7 +7,7 @@ You want to know what's happening "under the hood" of your application? ZAPHYR p
 
 To get started, install the logger repository via the [Composer](https://getcomposer.org/) package manager:
 
-```console
+```bash
 composer require zaphyr-org/logger
 ```
 

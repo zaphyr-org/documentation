@@ -6,7 +6,7 @@ A convenient interface for encrypting and decrypting text via OpenSSL using `AES
 
 To get started, install the encrypt repository via the [Composer](https://getcomposer.org/) package manager:
 
-```console
+```bash
 composer require zaphyr-org/encrypt
 ```
 

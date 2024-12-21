@@ -11,7 +11,7 @@ via OpenSSL using `AES-128` and `AES-256` encryption.
 
 To get started, install the encrypt repository via the [Composer](https://getcomposer.org/) package manager:
 
-```console
+```bash
 composer require zaphyr-org/encrypt
 ```
 

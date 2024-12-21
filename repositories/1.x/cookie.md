@@ -6,7 +6,7 @@ Small repository for handling cookies.
 
 To get started, install the cookie repository via the [Composer](https://getcomposer.org/) package manager:
 
-```console
+```bash
 composer require zaphyr-org/cookie
 ```
 

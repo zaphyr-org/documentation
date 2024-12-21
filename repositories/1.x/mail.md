@@ -6,7 +6,7 @@ A mail API over the popular Symfony Mailer.
 
 To get started, install the mail repository via the [Composer](https://getcomposer.org/) package manager:
 
-```console
+```bash
 composer require zaphyr-org/mail
 ```
 

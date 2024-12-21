@@ -7,7 +7,7 @@ Lightweight and strict implementation of [PSR-7 HTTP Message](https://www.php-fi
 
 To get started, install the http-message repository via the [Composer](https://getcomposer.org/) package manager:
 
-```console
+```bash
 composer require zaphyr-org/http-message
 ```
 

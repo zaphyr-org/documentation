@@ -6,7 +6,7 @@ Emits [PSR-7](https://www.php-fig.org/psr/psr-7) responses to the PHP Server API
 
 To get started, install the http-emitter repository via the [Composer](https://getcomposer.org/) package manager:
 
-```console
+```bash
 composer require zaphyr-org/http-emitter
 ```
 
