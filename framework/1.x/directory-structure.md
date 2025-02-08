@@ -71,48 +71,134 @@ testing framework you prefer.
 The `vendor` directory contains all of your application's dependencies. This directory is managed by
 [Composer](https://getcomposer.org/) and should not be modified directly.
 
-## Change directory structure
+## Retrieving directory paths in your application
 
-The default directory structure is just a suggestion, and you are not required to stick to it. You can change the
-directory structure as you see fit.
-
-Let's take a look at how you can change the default directory structure. A good starting point for modifying the
-directory structure is the `bootstrap.php` file located in your `app` directory. This file is responsible for
-bootstrapping the application and setting up the environment.
-
-For example, let's say you want to change the `config` directory to the `settings` directory. You can do this by
-modifying the `bootstrap.php` file as follows:
+To get the paths of various directories in your application, use the following getter methods:
 
 ```php
-$application = new Zaphyr\Framework\Application(dirname(__DIR__));
-$application->setConfigPath('settings');
+$application->getRootPath(); // /path/to/root
+$application->getAppPath(); // /path/to/root/app
+$application->getBinPath(); // /path/to/root/bin
+$application->getConfigPath(); // /path/to/root/config
+$application->getPublicPath(); // /path/to/root/public
+$application->getResourcesPath(); // /path/to/root/resources
+$application->getStoragePath(); // /path/to/root/storage
 ```
 
-The `Zaphyr\Framework\Application` class is responsible for bootstrapping the application. This class offers the
-following methods to change the default directory structure:
+### Retrieving specific file or directory paths
 
-- **setAppPath** - Sets the path to the `app` directory.
-- **setBinPath** - Sets the path to the `bin` directory.
-- **setConfigPath** - Sets the path to the `config` directory.
-- **setPublicPath** - Sets the path to the `public` directory.
-- **setResourcesPath** - Sets the path to the `resources` directory.
-- **setStoragePath** - Sets the path to the `storage` directory.
-
-Each of the above setter methods also has a corresponding getter method to retrieve the current path:
+You can also pass parameters to these getter methods to obtain the path to a specific file or subdirectory:
 
 ```php
-$application->getAppPath();
-$application->getBinPath();
-$application->getConfigPath();
-$application->getPublicPath();
-$application->getResourcesPath();
-$application->getStoragePath();
+$application->getResourcesPath('views'); // /path/to/root/resources/views
+$application->getResourcesPath('views/template.html'); // /path/to/root/resources/views/template.html
 ```
 
 > [!NOTE]
-> You should always use these getter methods inside your application's code to retrieve the current path, as this
-> ensures that the path is always correct. Please do not hardcode paths inside your application code, as this can lead
-> to problems when changing the directory structure.
+> Always use these getter methods to retrieve paths within your application code. This ensures the paths remain
+> accurate and adaptable to future directory structure changes. Avoid hardcoding paths, as this can lead to issues when
+> modifying the application's directory layout.
+
+## Change directory structure
+
+The default directory structure is merely a suggestion, and you are free to customize it to suit your needs.
+
+#### Modifying the directory structure in `composer.json`
+
+To modify the directory structure, update the `composer.json` file. You can specify custom paths for different
+directories within the `extra` section of your application's `composer.json` file.
+
+```json
+"extra": {
+    "zaphyr": {
+        "paths": {
+            "app": "path/to/app",
+            "bin": "path/to/bin",
+            "config": "path/to/config",
+            "public": "path/to/public",
+            "resources": "path/to/resources",
+            "storage": "path/to/storage"
+        }
+    }
+}
+```
+
+#### Passing paths to the application constructor
+
+Another option is to pass the paths to the constructor of the `Zaphyr\Framework\Application` class:
+
+```php
+$paths = [
+    'app' => 'path/to/app',
+    'bin' => 'path/to/bin',
+    'config' => 'path/to/config',
+    'public' => 'path/to/public',
+    'resources' => 'path/to/resources',
+    'storage' => 'path/to/storage'
+];
+
+$application = new Zaphyr\Framework\Application($paths);
+```
+
+> [!IMPORTANT]
+> However, this approach should only be used in unit test environments, as the [plugin installer](/docs/framework/latest/plugins)
+> only reads the application paths from the `composer.json` file.
+> 
+> Paths passed to the constructor override those defined in the composer.json file.
+
+### Change the `root` directory
+
+The root directory serves as the base directory of your application. By default, it is set to the location of the
+`composer.json` file. For example, if `composer.json` is located in `/var/www/html/app`, the root directory will
+be `/var/www/html/app`.
+
+#### Modifying the root directory in `composer.json`
+
+You can change the root directory by modifying the `composer.json file`. To do this, define the root directory in the
+`extra` section of your application's `composer.json` file:
+
+<pre><code class="language-diff-json">
+"extra": {
+    "zaphyr": {
+        "paths": {
++           "root": "/path/to/new/root",
+            "app": "path/to/app",
+            "bin": "path/to/bin",
+            "config": "path/to/config",
+            "public": "path/to/public",
+            "resources": "path/to/resources",
+            "storage": "path/to/storage"
+        }
+    }
+}
+</code></pre>
+
+#### Setting the root directory via `$_ENV`
+
+You can also define the root directory using the $_ENV superglobal.
+
+```php
+$_ENV['ROOT_PATH'] = '/path/to/new/root';
+```
+
+> [!NOTE]
+> If the root directory is set using `$_ENV`, it wil override the value specified in the `composer.json`.
+
+#### Passing the root directory to the application constructor
+
+Alternatively, you can pass the root directory to the constructor of the `Zaphyr\Framework\Application` constructor:
+
+```php
+$paths = [
+    'root' => '/path/to/new/root'
+];
+
+$application = new Zaphyr\Framework\Application($paths);
+```
+
+> [!NOTE]
+> If a root directory is provided to the constructor, it takes precedence over values defined in both `composer.json`
+> and `$_ENV`.
 
 ### Change the `app` directory
 
