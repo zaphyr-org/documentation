@@ -52,9 +52,34 @@ In line 13 we finally check our input data against the validation rules.
 Last but not least, we call the `isValid()` method on line 15. This method returns `true` if all inputs are valid and
 `false` otherwise.
 
+### Validation of extra inputs
+
+<span class="badge__available">Available since v2.1.0</span>
+
+By default, the validate service allows you to pass additional inputs that are not defined in the validation rules.
+If you want to prevent this, you can set the `allowExtraInputs` flag to `false`:
+
+```php
+$inputs = [
+    'name' => 'John Doe',
+    'email' => 'jonh@doe.com',
+];
+
+$rules = [
+    'name' => 'required',
+];
+
+$validator->validate($inputs, $rules, allowExtraInputs: false);
+```
+
+If you now pass additional inputs that are not defined in the validation rules, the `isValid()` method returns `false`.
+In this case, the `errors()` method returns an error message that the input field was not expected (e.g. "Email was not
+expected").
+
 ## Validation error messages
 
-What would be a decent validator if it would not return helpful validation error messages in case of a failed validation?
+What would be a decent validator if it would not return helpful validation error messages in case of a failed
+validation?
 
 So if your validation fails, you can use the `errors()` method to display all validation errors. This method returns a
 `Zaphyr\Validate\MessageBag` instance containing all error messages:
@@ -298,7 +323,6 @@ You can also instruct the validate service to output the error messages in other
 service can return the error messages in American English as well as in German. If you want to output error messages in
 German, you have to configure the `Validator` instance as follows:
 
-
 ```php
 $locale = 'de';
 $validator = new \Zaphyr\Validate\Validator($locale);
@@ -320,7 +344,7 @@ So you should now have the following `validation.json` file:
 ```json
 // path/to/your/translations/pl/validation.json:
 {
-  "required": "To pole jest obowiązkowe"
+    "required": "To pole jest obowiązkowe"
 }
 ```
 
@@ -353,11 +377,11 @@ extend your `validation.json` file as follows:
 ```json
 // path/to/your/translations/pl/validation.json:
 {
-  "_custom": {
-    "password": {
-      "required": "Wprowadź hasło"
+    "_custom": {
+        "password": {
+            "required": "Wprowadź hasło"
+        }
     }
-  }
 }
 ```
 
@@ -386,10 +410,10 @@ as `username`, you can simply define your own names in your `valdation.json` und
 ```json
 // path/to/your/translations/pl/validation.json:
 {
-  "_fields": {
-    "name": "nazwa użytkownika"
-  },
-  "required": "Pole %field% jest wymagane"
+    "_fields": {
+        "name": "nazwa użytkownika"
+    },
+    "required": "Pole %field% jest wymagane"
 }
 ```
 
