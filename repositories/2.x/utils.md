@@ -81,7 +81,6 @@ Zaphyr\Utils\Arr::first([100, 200, 300], fn ($value, $key) => $value <= 150 )); 
 A default value may also be passed as the third parameter to the method.
 This value will be returned if no value passes the truth test.
 
-
 ```php
 Zaphyr\Utils\Arr::first([100, 200, 300], fn ($value, $key) => $value <= 50, 100); // 100
 ```
@@ -170,7 +169,7 @@ Zaphyr\Utils\ClassFinder::getClassNameFromFile('src/Foo.php'); // 'Foo'
 
 #### getClassBasename
 
-<span class="badge__available">Available since v2.0.0</span>
+<span class="badge badge-soft badge-info">Available since v2.0.0</span>
 
 Returns the class basename of a given string or object.
 
@@ -194,7 +193,7 @@ Useful helper class for country names and lists.
 
 #### getNameByIsoCode
 
-<span class="badge__available">Available since v2.0.0</span>
+<span class="badge badge-soft badge-info">Available since v2.0.0</span>
 
 Returns a country name by its corresponding ISO code.
 
@@ -213,10 +212,9 @@ Zaphyr\Utils\Country::getAllCountries(); // ['AF' => 'Afghanistan', […] 'ZW' =
 > [!NOTE]
 > Since v2.0.0 this method returns the ISO code of a country as array key.
 
-
 #### getAllCountriesAsJsonString
 
-<span class="badge__available">Available since v2.0.0</span>
+<span class="badge badge-soft badge-info">Available since v2.0.0</span>
 
 Returns a JSON string of all available countries with ISO code as key.
 
@@ -385,6 +383,7 @@ Zaphyr\Utils\File::info(__FILE__);
 //      'filename' => '…',
 // ]
 ```
+
 This method also accepts a second parameter to return a specific path information.
 Any valid `PATHINFO_*` constant can be used:
 
@@ -642,9 +641,9 @@ Moves a file to a given directory.
 Zaphyr\Utils\File::move('source-file', 'destination-target'); // true
 ```
 
-####  serialize
+#### serialize
 
-<span class="badge__available">Available since v2.2.0</span>
+<span class="badge badge-soft badge-info">Available since v2.2.0</span>
 
 Serializes the given data and writes it to a file.
 
@@ -654,7 +653,7 @@ Zaphyr\Utils\File::serialize(__FILE__, ['foo' => 'bar']);
 
 #### unserialize
 
-<span class="badge__available">Available since v2.2.0</span>
+<span class="badge badge-soft badge-info">Available since v2.2.0</span>
 
 Unserializes the content of a given file.
 
@@ -719,7 +718,6 @@ $options = \FilesystemIterator::SKIP_DOTS;
 
 Zaphyr\Utils\File::copyDirectory('source-directory', 'target-destination-directory', $options);
 ```
-
 
 ## Filter
 
@@ -1172,7 +1170,8 @@ Zaphyr\Utils\Form::url('website');
 // <input name="website" type="url">
 ```
 
-The method also accepts a default value as the second argument as well as an array of custom HTML attributes as the third argument.
+The method also accepts a default value as the second argument as well as an array of custom HTML attributes as the
+third argument.
 
 ```php
 Zaphyr\Utils\Form::url('website', 'https://localhost', ['class' => 'input']);
@@ -1220,7 +1219,8 @@ Zaphyr\Utils\Form::color('background');
 // <input name="background" type="color">
 ```
 
-The method also accepts a default value as the second argument as well as an array of custom HTML attributes as the third argument.
+The method also accepts a default value as the second argument as well as an array of custom HTML attributes as the
+third argument.
 
 ```php
 Zaphyr\Utils\Form::color('background', '#ffffff', ['class' => 'input']);
@@ -1422,6 +1422,7 @@ Zaphyr\Utils\Form::select(
 //      <option value="s">Small</option>
 // </select>
 ```
+
 Returns a drop-down list with `<optgroup>` tags and disabled options.
 
 ```php
@@ -1763,7 +1764,8 @@ Useful string helper methods.
 
 #### toAscii
 
-Returns an ASCII version of the string. A set of non-ASCII characters are replaced with their closest ASCII counterparts,
+Returns an ASCII version of the string. A set of non-ASCII characters are replaced with their closest ASCII
+counterparts,
 and the rest are removed by default.
 
 ```php
@@ -1781,7 +1783,7 @@ Zaphyr\Utils\Str::toAscii('�Düsseldorf�', 'en'); // 'Dusseldorf'
 
 #### isAscii
 
-<span class="badge__available">Available since v2.0.0</span>
+<span class="badge badge-soft badge-info">Available since v2.0.0</span>
 
 Checks if a string is 7 bit ASCII.
 
@@ -2046,7 +2048,7 @@ Zaphyr\Utils\Str::snake('HelloWorld'); // 'hello_world'
 
 ## Template
 
-<span class="badge__available">Available since v2.1.0</span>
+<span class="badge badge-soft badge-info">Available since v2.1.0</span>
 
 The `Template` class provides an easy way to enrich templates with placeholders. The class is very limited and can
 only replace simple string placeholders. So this class is rather meant for small projects, simple template files or
@@ -2090,13 +2092,14 @@ Zaphyr\Utils\Timezone::getAllTimezones();
 //      […]
 // ],
 ```
+
 > [!NOTE]
 > Since v2.0.0 this method returns the timezones grouped by its corresponding continent. Also, the timezones are now
 > generated dynamically via `\DateTimeZone::listIdentifiers()`
 
 #### getAllTimezonesAsJsonString
 
-<span class="badge__available">Available since v2.0.0</span>
+<span class="badge badge-soft badge-info">Available since v2.0.0</span>
 
 Returns all available timezones as JSON string.
 
@@ -2107,7 +2110,7 @@ Zaphyr\Utils\Timezone::getAllTimezonesAsJsonString();
 
 #### getTimezonesByContinent
 
-<span class="badge__available">Available since v2.0.0</span>
+<span class="badge badge-soft badge-info">Available since v2.0.0</span>
 
 Returns a timezone array of the given continent.
 
@@ -2122,7 +2125,7 @@ Zaphyr\Utils\Timezone::getTimezonesByContinent('Europe');
 
 #### getTimezone
 
-<span class="badge__available">Available since v2.0.0</span>
+<span class="badge badge-soft badge-info">Available since v2.0.0</span>
 
 Returns the timezone of the given continent and country.
 

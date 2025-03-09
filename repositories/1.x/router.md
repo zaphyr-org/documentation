@@ -39,12 +39,14 @@ try {
 
 #### Code explanation
 
-The code begins by creating a new instance of the `Zaphyr\Router\Router` class. A route is defined using the `add` method.
+The code begins by creating a new instance of the `Zaphyr\Router\Router` class. A route is defined using the `add`
+method.
 In this case, a route is created for the root URL ('/') with an HTTP GET request method. The third argument is a closure
 that receives an instance of `Psr\Http\Message\ServerRequestInterface` (representing the incoming request) and returns
 an instance of `Psr\Http\Message\ResponseInterface` (representing the response).
 
-The router is then used to handle incoming requests. The `handle` method takes a `Psr\Http\Message\ServerRequestInterface`
+The router is then used to handle incoming requests. The `handle` method takes a
+`Psr\Http\Message\ServerRequestInterface`
 instance representing the current request. This method tries to match the request to the defined routes and invokes the
 associated closure when a match is found.
 
@@ -54,7 +56,8 @@ allowed for a matched route (i.e., a 405 error), a `Zaphyr\Router\Exceptions\Met
 can customize the error handling logic in these catch blocks according to your application's requirements.
 
 > [!NOTE]
-> This repository does **NOT** come with a PSR-7 implementation out of the box. For a PSR-7 implementation, check out the
+> This repository does **NOT** come with a PSR-7 implementation out of the box. For a PSR-7 implementation, check out
+> the
 > [HTTP Message](/docs/repositories/latest/http-message) repository.
 
 ## Route callables
@@ -129,7 +132,8 @@ $router->add('/', ['GET'], [MyController::class, 'indexAction']);
 ### Class method (lazy loaded)
 
 A callable can be defined as a string containing the fully qualified class name and method name separated by an `@`. The
-router will then lazy load the class and invoke the method. The class will not be instantiated until the route is matched:
+router will then lazy load the class and invoke the method. The class will not be instantiated until the route is
+matched:
 
 ```php
 class MyController
@@ -145,7 +149,8 @@ $router->add('/', ['GET'], 'MyController@indexAction');
 
 ### Class implementing __invoke (lazy loaded)
 
-A callable can be defined as a string containing the fully qualified class name. The router will then lazy load the class
+A callable can be defined as a string containing the fully qualified class name. The router will then lazy load the
+class
 and invoke the magic `__invoke` method. The class will not be instantiated until the route is matched:
 
 ```php
@@ -163,7 +168,8 @@ $router->add('/', ['GET'], MyController::class);
 ## Routes
 
 The router repository supports two different types of defining routes. One way is to define routes using PHP methods.
-The other way is to define routes using [PHP attributes](https://www.php.net/manual/en/language.attributes.overview.php).
+The other way is to define routes
+using [PHP attributes](https://www.php.net/manual/en/language.attributes.overview.php).
 If you define your routes using PHP methods, simply define your routes and your good to go. If you define your routes
 using PHP attributes, you need to pass the attributed-based controllers to the router constructor or add them using the
 `setControllerRoutes`:
@@ -183,7 +189,7 @@ $router = new Zaphyr\Router\Router(controllers: [
 ]);
 ```
 
-As  you can see in the example above, the attributed-based controller is passed to the router constructor as an array of
+As you can see in the example above, the attributed-based controller is passed to the router constructor as an array of
 controllers. But you can also add attributed-based controllers using the `setControllerRoutes` method:
 
 ```php
@@ -290,7 +296,8 @@ class Controller
 }
 ```
 
-The route will only match if the incoming request's scheme matches the specified scheme (`GET: https://example.com/get`).
+The route will only match if the incoming request's scheme matches the specified scheme (
+`GET: https://example.com/get`).
 
 #### Host
 
@@ -336,9 +343,11 @@ class Controller
 }
 ```
 
-The route will only match if the incoming request's port matches the specified port (`GET: https://example.com:8080/get`).
+The route will only match if the incoming request's port matches the specified port (
+`GET: https://example.com:8080/get`).
 
-Conditions can also be added to route groups. See the [Group conditions](#group-conditions) section for more information.
+Conditions can also be added to route groups. See the [Group conditions](#group-conditions) section for more
+information.
 
 ### Route patterns
 
@@ -449,7 +458,7 @@ $router->getPathFromName('user.show', ['id' => 1]); // "/user/1"
 
 ### List routes
 
-<span class="badge__available">Available since v1.2.0</span>
+<span class="badge badge-soft badge-info">Available since v1.2.0</span>
 
 You may want to list all the routes that are defined in the router. The `getRoutes` method returns an array of all
 defined route instances:
@@ -460,7 +469,7 @@ $router->getRoutes();
 
 ### Route callable name
 
-<span class="badge__available">Available since v1.3.0</span>
+<span class="badge badge-soft badge-info">Available since v1.3.0</span>
 
 The `getCallableName` method can be used to retrieve the callable name of a route. The callable name is a string that
 contains the class name and method name of the route callable:
@@ -505,7 +514,8 @@ class UserController
 
 ### Group conditions
 
-As mentioned in the above [Route conditions](#route-conditions) section, it is also possible to add additional conditions
+As mentioned in the above [Route conditions](#route-conditions) section, it is also possible to add additional
+conditions
 to groups.
 
 #### Scheme
@@ -591,7 +601,8 @@ The group will only match if the incoming request's port matches the specified p
 ## Middleware
 
 The router contains a [PSR-15](https://www.php-fig.org/psr/psr-15/) compliant middleware dispatcher, which means that it
-can handle the invocation of a stack of middleware. Because the router is build around PSR-15, middleware and controllers
+can handle the invocation of a stack of middleware. Because the router is build around PSR-15, middleware and
+controllers
 are handled in a [single pass approach](https://www.php-fig.org/psr/psr-15/meta/#52-single-pass-lambda). This means that
 all middleware is passed a request object and a request handler, but is expected to return its own response object or
 pass off to the next middleware in the stack by calling the `handle` method on the request handler.
@@ -619,7 +630,8 @@ class AuthMiddleware implements Psr\Http\Server\MiddlewareInterface
 
 As you can see, the middleware implements the `Psr\Http\Server\MiddlewareInterface` interface. The request argument is
 the first argument of the `process` method. The second argument is a `Psr\Http\Server\RequestHandlerInterface` instance,
-so that you can continue the request handling process by calling the `handle` method on the `$handler` instance and trigger
+so that you can continue the request handling process by calling the `handle` method on the `$handler` instance and
+trigger
 the next middleware in the stack.
 
 ### Set middleware

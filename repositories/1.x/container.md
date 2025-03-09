@@ -135,7 +135,7 @@ $container->isSingleton(BarInterface::class);
 
 ### Binding instances
 
-<span class="badge__available">Available since v1.1.0</span>
+<span class="badge badge-soft badge-info">Available since v1.1.0</span>
 
 The `bindInstance` method in the container binds a class or interface to an already existing instance. When a binding
 is resolved, the same object instance will be returned whenever the container is called again for that binding:

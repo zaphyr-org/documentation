@@ -61,7 +61,7 @@ $config->load(['./config/path']);
 > Files are parsed and loaded depending on the file extension. When loading a directory,
 > the path is `glob`ed and files are loaded in by name alphabetically.
 
-<span class="badge__available">Available since v2.3.0</span>
+<span class="badge badge-soft badge-info">Available since v2.3.0</span>
 
 Since v2.3.0 it is also possible to load configuration files from a directory recursively. Let's say you have the
 following directory structure:
@@ -254,7 +254,7 @@ Now you can use configuration files with your own file extension.
 
 ## Dependency Injection
 
-<span class="badge__available">Available since v2.2.0</span>
+<span class="badge badge-soft badge-info">Available since v2.2.0</span>
 
 The config repository supports dependency injection, by using any [PSR-11](https://www.php-fig.org/psr/psr-11/)
 compatible DI container. The PSR-11 container instance can be set using the `setContainer` method:

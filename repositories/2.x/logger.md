@@ -32,11 +32,12 @@ $logger->debug('This is a debug message');
 
 ### Configuring a LogManager instance
 
-If you want to use multiple logger instances in your application, it is recommended to use the `Zaphyr\Logger\LogManager`.
+If you want to use multiple logger instances in your application, it is recommended to use the
+`Zaphyr\Logger\LogManager`.
 Via the LogManager multiple logger instances can be configured, and you can decide later which log stack to use.
 For example, you can create different log stacks for your development application and your production application.
 
-First we pass a default stack to the LogManager. In our example this is the `development` stack.  Whenever we make a log
+First we pass a default stack to the LogManager. In our example this is the `development` stack. Whenever we make a log
 entry via the LogManager and do not pass a logger name to the `logger()` method, the default stack is used.
 
 Next, we define the desired logger stacks and specify which log handlers each stack should use. In our example we have a
@@ -160,17 +161,17 @@ $rotateHandler = new Zaphyr\Logger\Handlers\RotateHandler('/path/to/log/director
 
 The following intervals can be used to create log files:
 
-| Interval                                               | Description                         |
-|:-------------------------------------------------------|:------------------------------------|
-| `Zaphyr\Logger\Handlers\RotateHandler::INTERVAL_HOUR`  | Creates a new log file every hour   |
-| `Zaphyr\Logger\Handlers\RotateHandler::INTERVAL_DAY`   | Creates a new log file every day    |
-| `Zaphyr\Logger\Handlers\RotateHandler::INTERVAL_WEEK`  | Creates a new log file every week   |
-| `Zaphyr\Logger\Handlers\RotateHandler::INTERVAL_MONTH` | Creates a new log file every month  |
-| `Zaphyr\Logger\Handlers\RotateHandler::INTERVAL_YEAR`  | Creates a new log file every year   |
+| Interval                                               | Description                        |
+|:-------------------------------------------------------|:-----------------------------------|
+| `Zaphyr\Logger\Handlers\RotateHandler::INTERVAL_HOUR`  | Creates a new log file every hour  |
+| `Zaphyr\Logger\Handlers\RotateHandler::INTERVAL_DAY`   | Creates a new log file every day   |
+| `Zaphyr\Logger\Handlers\RotateHandler::INTERVAL_WEEK`  | Creates a new log file every week  |
+| `Zaphyr\Logger\Handlers\RotateHandler::INTERVAL_MONTH` | Creates a new log file every month |
+| `Zaphyr\Logger\Handlers\RotateHandler::INTERVAL_YEAR`  | Creates a new log file every year  |
 
 ### NoopHandler
 
-<span class="badge__available">Available since v2.1.0</span>
+<span class="badge badge-soft badge-info">Available since v2.1.0</span>
 
 The `Zaphyr\Logger\Handlers\NoopHandler` is a special handler that does nothing. It is useful for testing purposes or
 if you want to disable logging in certain environments:
@@ -257,11 +258,11 @@ The logging service comes with a handful of useful log formats:
 | `Zaphyr\Logger\Formatters\HtmlFormatter` | Creates log messages in HTML format. This formatter is useful e.g. if log messages are sent with the `MailFormatter`. |
 | `Zaphyr\Logger\Formatters\JsonFormatter` | Creates log messages in JSON format.                                                                                  |
 
-
 ### Change the formatter of a handler
 
 If you want to use a different formatter then the default formatter for a log handler, you can pass it as the last
-argument to the desired log handler instance. In the following example we exchange the`Zaphyr\Logger\Formatters\LogFormatter`
+argument to the desired log handler instance. In the following example we exchange the
+`Zaphyr\Logger\Formatters\LogFormatter`
 of the `Zaphyr\Logger\Handlers\MailHandler` for the `Zaphyr\Logger\Handlers\HtmlFormatter`:
 
 ```php

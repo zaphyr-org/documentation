@@ -407,7 +407,7 @@ $handler = new Zaphyr\Session\Handler\DatabaseHandler($connection, minutes: 120)
 
 ### Array session handler
 
-<span class="badge__available">Available since v1.1.0</span>
+<span class="badge badge-soft badge-info">Available since v1.1.0</span>
 
 The session repository also comes shipped with an array session handler, which stores the session data in an array and
 prevent the session data from being persisted. The array session handler is useful for testing purposes:
@@ -535,7 +535,8 @@ $session = $sessionManager->session(Zaphyr\Session\SessionManager::DATABASE_HAND
 
 ### Change the default session expiration time
 
-By default, the session manager will set the expiration time to **60 minutes**. If you want to set a different expiration
+By default, the session manager will set the expiration time to **60 minutes**. If you want to set a different
+expiration
 time, you can pass the `sessionExpireMinutes` parameter to the constructor:
 
 ```php
