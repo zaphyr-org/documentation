@@ -258,7 +258,7 @@ Zaphyr\Utils\Date::factory('2022-09-13 09:41:00'); // \DateTime::class
 
 #### sqlFormat
 
-Return a SQL compliant date format.
+Return an SQL compliant date format.
 
 ```php
 Zaphyr\Utils\Date::sqlFormat(); // 'Y-m-d H:i:s'
@@ -372,7 +372,7 @@ Zaphyr\Utils\File::isDir(__FILE__); // false
 
 #### info
 
-Returns a path information of a given file or directory.
+Returns path information of a given file or directory.
 
 ```php
 Zaphyr\Utils\File::info(__FILE__);
@@ -384,7 +384,7 @@ Zaphyr\Utils\File::info(__FILE__);
 // ]
 ```
 
-This method also accepts a second parameter to return a specific path information.
+This method also accepts a second parameter to return specific path information.
 Any valid `PATHINFO_*` constant can be used:
 
 ```php
@@ -528,7 +528,7 @@ Zaphyr\Utils\Files::files(__DIR__, true); // SplFileInfo[]
 
 #### allFiles
 
-Returns all files in a given directory including all files in subdirectories.
+Returns all files in a given directory, including all files in subdirectories.
 
 ```php
 Zaphyr\Utils\File::allFiles(__DIR__); // SplFileInfo[]
@@ -586,6 +586,14 @@ try {
 }
 ```
 
+<span class="badge badge-soft badge-info">Available since v2.2.3</span>
+
+It is also possible to acquire a lock on the file while reading it. Simply pass `true` as the second parameter.
+
+```php
+Zaphyr\Utils\File::read(__FILE__, true);
+```
+
 #### put
 
 Puts content inside a file.
@@ -610,7 +618,7 @@ Zaphyr\Utils\File::replace(__FILE__, 'contents');
 
 #### prepend
 
-Prepends content to a given file. If the file does not exist it will be created.
+Prepends content to a given file. If the file does not exist, it will be created.
 
 ```php
 Zaphyr\Utils\File::prepend(__FILE__, 'contents');
@@ -618,10 +626,18 @@ Zaphyr\Utils\File::prepend(__FILE__, 'contents');
 
 #### append
 
-Appends content to a given file. If the file does not exist it will be created.
+Appends content to a given file. If the file does not exist, it will be created.
 
 ```php
 Zaphyr\Utils\File::append(__FILE__, 'contents');
+```
+
+<span class="badge badge-soft badge-info">Available since v2.2.3</span>
+
+It is also possible to acquire a lock on the file while writing to it. Simply pass `true` as the third parameter.
+
+```php
+Zaphyr\Utils\File::append(__FILE__, 'contents', true);
 ```
 
 #### delete
@@ -660,6 +676,27 @@ Unserializes the content of a given file.
 ```php
 Zaphyr\Utils\File::unserialize(__FILE__);
 ```
+
+<span class="badge badge-soft badge-info">Available since v2.2.3</span>
+
+It is also possible to acquire a lock on the file while unserializing it. Simply pass `true` as the second parameter.
+
+```php
+Zaphyr\Utils\File::unserialize(__FILE__, true);
+```
+
+<span class="badge badge-soft badge-info">Available since v2.2.3</span>
+
+You can also pass an array of options to the unserialize method.
+
+```php
+$options = ['allowed_classes' => ['Foo', 'Bar']];
+
+Zaphyr\Utils\File::unserialize(__FILE__, options: $options);
+```
+
+> [!WARNING]
+> Do not pass untrusted user input to unserialize() regardless of the options value of `allowed_classes`.
 
 #### copy
 
@@ -731,7 +768,7 @@ Returns only the alpha chars of a string.
 Zaphyr\Utils\Filter::alpha('fo-0-o'); // 'foo'
 ```
 
-The `alpha()` method also accepts array of strings.
+The `alpha()` method also accepts an array of strings.
 
 ```php
 Zaphyr\Utils\Filter::alpha(['fo-0-o', '123asd']); // ['foo', 'asd']
@@ -739,13 +776,13 @@ Zaphyr\Utils\Filter::alpha(['fo-0-o', '123asd']); // ['foo', 'asd']
 
 #### alphanum
 
-Returns only the alphanum chars of a string.
+Returns only the alphanumeric chars of a string.
 
 ```php
 Zaphyr\Utils\Filter::alphanum('foo-* 123'); // 'foo123'
 ```
 
-This method also accepts array of strings.
+This method also accepts an array of strings.
 
 ```php
 Zaphyr\Utils\Filter::alphanum(['foo-* 123']); // ['foo123']
@@ -787,7 +824,7 @@ Zaphyr\Utils\Filter::int('- 1 0'); // -10
 
 ## Form
 
-The Form class contains useful helper to rapidly built HTML forms.
+The Form class contains useful helper to rapidly build HTML forms.
 
 #### open
 
@@ -1582,7 +1619,7 @@ Useful helper methods for calculating.
 
 #### round
 
-Rounds a given number up/down by a given precision.
+Rounds a given number up/down by given precision.
 
 ```php
 Zaphyr\Utils\Math::round(1.614); // 1.62
@@ -1785,7 +1822,7 @@ Zaphyr\Utils\Str::toAscii('�Düsseldorf�', 'en'); // 'Dusseldorf'
 
 <span class="badge badge-soft badge-info">Available since v2.0.0</span>
 
-Checks if a string is 7 bit ASCII.
+Check if a string is 7-bit ASCII.
 
 ```php
 Zaphyr\Utils\Str::isAscii('deja sss iiii'); // true
@@ -1851,7 +1888,7 @@ Zaphyr\Utils\Str::contains('Case sensitive', 'c', false); // true
 
 #### containsAll
 
-Determines if a given string contains all array substring.
+Determines if a given string contains all array substrings.
 
 ```php
 // case sensitive
@@ -1914,7 +1951,7 @@ Zaphyr\Utils\Str::limitSafe('Foo bar', 5, ' ->')); // 'Foo ->'
 
 #### firstPos
 
-Finds position of first occurrence of string in a string.
+Finds the position of the first occurrence of a string in a string.
 
 ```php
 // case sensitive
@@ -1930,7 +1967,7 @@ Zaphyr\Utils\Str::firstPos('Hello World', 'world', 0, false); // 6
 
 #### lastPos
 
-Finds position of last occurrence of a string in a string.
+Finds the position of the last occurrence of a string in a string.
 
 ```php
 // case sensitive
@@ -2007,13 +2044,13 @@ Zaphyr\Utils\Str::title('hello world'); // 'Hello World'
 
 #### slug
 
-Generates a URL friendly "slug" from a given string.
+Generates a URL-friendly "slug" from a given string.
 
 ```php
 Zaphyr\Utils\Str::slug('Hello World'); // 'hello-world'
 ```
 
-Since v2.0.0 it is also possible to pass a language code to the method. The language or locale of the source string can
+Since v2.0.0, it is also possible to pass a language code to the method. The language or locale of the source string can
 be supplied for language-specific transliteration in any of the following formats: en, en_GB, or en-GB. For example,
 passing “de” results in “äöü” mapping to “aeoeue” rather than “aou” as in other languages.
 
@@ -2067,7 +2104,7 @@ echo Zaphyr\Utils\Template::render('/path/to/template/file.html', [
 // <p>Hello John Doe</p>
 ```
 
-The template file will look like the following example. All variables which should be replaced within the template file
+The template file will look like the following example. All variables that should be replaced within the template file
 are wrapped with `%`.
 
 ```html
@@ -2127,7 +2164,7 @@ Zaphyr\Utils\Timezone::getTimezonesByContinent('Europe');
 
 <span class="badge badge-soft badge-info">Available since v2.0.0</span>
 
-Returns the timezone of the given continent and country.
+Returns the time zone of the given continent and country.
 
 ```php
 Zaphyr\Utils\Timezone::getTimezone('Europe', 'Amsterdam'); // '(UTC+02:00) Amsterdam'
