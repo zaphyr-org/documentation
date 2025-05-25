@@ -57,8 +57,8 @@ $session->getToken();
 ```
 
 You can also set a custom session token with the `setToken` method. The provided token must be a string of 40
-alphanumeric
-characters. If the provided string does not fit the criteria, the `setToken` method will create a new random token:
+alphanumeric characters. If the provided string does not fit the criteria, the `setToken` method will create a new
+random token:
 
 ```php
 $session->setToken('oRILZgj1i94DNaAUotusSOCR7WvymbaLSMOxYhNF');
@@ -71,8 +71,7 @@ $session->setToken('oRILZgj1i94DNaAUotusSOCR7WvymbaLSMOxYhNF');
 ### Session ID
 
 The session ID is used to identify the session. The session ID is generated automatically when the session is
-instantiated.
-You can retrieve the session ID with the `getId` method:
+instantiated. You can retrieve the session ID with the `getId` method:
 
 ```php
 $session->getId();
@@ -327,8 +326,8 @@ $handler = new Zaphyr\Session\Handler\FileHandler('/path/to/storage');
 ```
 
 > [!NOTE]
-> The file handler does not create the storage directory automatically. You have to create the directory manually.
-> Also, the storage directory must be writable by the web server!
+> Since v1.1.2, the file handler will automatically create the storage directory if it does not exist. In previous
+> versions, you have to create the storage directory manually.
 
 #### Configuring the file handler session lifetime
 
@@ -341,8 +340,8 @@ $handler = new Zaphyr\Session\Handler\FileHandler('/path/to/storage', minutes: 1
 
 ### Database session handler
 
-The `Zaphyr\Session\Handler\DatabaseHandler` stores the session data in a database. The database handler fits perfect,
-if you serve your application on multiple servers, and want to share the session data between the servers.
+The `Zaphyr\Session\Handler\DatabaseHandler` stores the session data in a database. The database handler fits perfect
+if you serve your application on multiple servers and want to share the session data between the servers.
 
 When using the database handler, you will need to create a table to store the session data. Below is an example of a
 table that can be used to store the session data in a MySQL database:
@@ -374,7 +373,7 @@ $handler = new Zaphyr\Session\Handler\DatabaseHandler($connection);
 ```
 
 You can read more about doctrine database connections in the
-[Doctrine documentation](https://www.doctrine-project.org/projects/doctrine-dbal/en/3.7/reference/configuration.html).
+[Doctrine documentation](https://www.doctrine-project.org/projects/doctrine-dbal/en/4.2/reference/configuration.html).
 
 #### Configuring the database table and column names
 
@@ -410,7 +409,7 @@ $handler = new Zaphyr\Session\Handler\DatabaseHandler($connection, minutes: 120)
 <span class="badge badge-soft badge-info">Available since v1.1.0</span>
 
 The session repository also comes shipped with an array session handler, which stores the session data in an array and
-prevent the session data from being persisted. The array session handler is useful for testing purposes:
+prevents the session data from being persisted. The array session handler is useful for testing purposes:
 
 ```php
 $handler = new Zaphyr\Session\Handler\ArrayHandler(minutes: 120);
@@ -479,7 +478,7 @@ class MyCustomHandler implements SessionHandlerInterface
 
 The session repository comes shipped with a session manager, which makes it easy to create and manage sessions. Instead
 of creating a session instance manually, you can use the session manager to create sessions. The session manager also
-makes it easy to change the session handler, and to set the session lifetime. The session manager requires a session
+makes it easy to change the session handler and to set the session lifetime. The session manager requires a session
 name and an array of session handler options. The session name is used to identify the session, and the session handler
 options are used to create the session handler. Below is an example of how to create a session manager:
 
@@ -575,7 +574,7 @@ using the `addHandler`. The first parameter is the name of the handler, and the 
 returns an instance of the custom session handler:
 
 ```php
-$sessionManager->addHandler('custom_handler', fn () => new MyCustomHandler());
+$sessionManager->addHandler('custom_handler', fn() => new MyCustomHandler());
 ```
 
 After you have added the custom session handler, you can use it by passing the name of the handler to the `session`
