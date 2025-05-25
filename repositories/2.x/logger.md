@@ -33,9 +33,9 @@ $logger->debug('This is a debug message');
 ### Configuring a LogManager instance
 
 If you want to use multiple logger instances in your application, it is recommended to use the
-`Zaphyr\Logger\LogManager`.
-Via the LogManager multiple logger instances can be configured, and you can decide later which log stack to use.
-For example, you can create different log stacks for your development application and your production application.
+`Zaphyr\Logger\LogManager`. Via the LogManager multiple logger instances can be configured, and you can decide later
+which log stack to use. For example, you can create different log stacks for your development application and your
+production application.
 
 First we pass a default stack to the LogManager. In our example this is the `development` stack. Whenever we make a log
 entry via the LogManager and do not pass a logger name to the `logger()` method, the default stack is used.
@@ -100,7 +100,7 @@ $exception  = new Exception('Something went wrong');
 $logger->alert('Something went wrong', ['exception' => $exception]);
 ```
 
-In the log message there is now also a detailed representation of the passed Exception.
+In the log message, there is now also a detailed representation of the passed Exception.
 
 ## Handlers
 
@@ -151,7 +151,7 @@ Now you will get all log messages sent to the email address specified in your em
 The `Zaphyr\Logger\Handlers\RotateHandler` is also a log file handler. However, an interval can be set for this handler,
 at which intervals a new log file should be created. By default, this handler creates a new log file for each day.
 
-Simply inject the path to the folder in which the log files should be saved and enter the desired interval:
+Inject the path to the folder in which the log files should be saved and enter the desired interval:
 
 ```php
 $rotateHandler = new Zaphyr\Logger\Handlers\RotateHandler('/path/to/log/directory', Zaphyr\Logger\Handlers\RotateHandler::INTERVAL_DAY);
@@ -173,11 +173,27 @@ The following intervals can be used to create log files:
 
 <span class="badge badge-soft badge-info">Available since v2.1.0</span>
 
-The `Zaphyr\Logger\Handlers\NoopHandler` is a special handler that does nothing. It is useful for testing purposes or
+The `Zaphyr\Logger\Handlers\NoopHandler` is a special handler that does nothing. It is useful for testing purposes, or
 if you want to disable logging in certain environments:
 
 ```php
 $noopHandler = new Zaphyr\Logger\Handlers\NoopHandler();
+```
+
+### Set log level
+
+<span class="badge badge-soft badge-info">Available since v2.2.0</span>
+
+You can set a log level for each log handler. This means that the handler processes only log messages with severity
+greater than or equal to the specified log level. For example, if you set the log level to
+`Zaphyr\Logger\Level::ERROR`, only log messages with the levels `ERROR`, `CRITICAL`, `ALERT`, and `EMERGENCY` are
+processed by the handler.
+
+See the following example for how to set a log level for a `FileHandler`:
+
+```php
+$level = Zaphyr\Logger\Level::WARNING;
+$fileHandler = new Zaphyr\Logger\Handlers\FileHandler('/path/to/log/file.log', level: $level);
 ```
 
 ### Usage of multiple handlers
@@ -185,7 +201,7 @@ $noopHandler = new Zaphyr\Logger\Handlers\NoopHandler();
 As you may have seen in the previous examples, multiple log handlers can be triggered simultaneously as soon as a log
 message is registered.
 
-For example, if you not only want to store a log message in a file, but also send it as an email to a responsible
+For example, if you not only want to store a log message in a file but also send it as an email to a responsible
 administrator, you can do this as follows:
 
 ```php
@@ -210,15 +226,15 @@ log file and then sent as an e-mail.
 ### Create a custom handler
 
 It is also possible to create a custom log handler. To do this, you first create your own handler class which
-implements the ` Zaphyr\Logger\Contracts\HandlerInterface`:
+extends the `Zaphyr\Logger\Handlers\AbstractHandler`:
 
 ```php
-class MyCustomHandler implements Zaphyr\Logger\Contracts\HandlerInterface
+class MyCustomHandler extends Zaphyr\Logger\Handlers\AbstractHandler
 {
     /**
      * {@inheritdoc}
      */
-    public function add(string $name, string $level, string $message, array $context = []): void
+    protected function write(string $name, string $level, string|\Stringable $message, array $context = []): void
     {
         // your custom handler logic
     }
@@ -278,7 +294,7 @@ new Zaphyr\Logger\Handlers\MailHandler($mailer, $email, new Zaphyr\Logger\Format
 
 ### Create a custom formatter
 
-It could be possible that you want to save a log message in a different format. In this case you can simply create
+It could be possible that you want to save a log message in a different format. In this case, you can simply create
 a custom formatter instance:
 
 ```php
