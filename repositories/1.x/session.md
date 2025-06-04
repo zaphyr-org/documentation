@@ -343,8 +343,14 @@ $handler = new Zaphyr\Session\Handler\FileHandler('/path/to/storage', minutes: 1
 The `Zaphyr\Session\Handler\DatabaseHandler` stores the session data in a database. The database handler fits perfect
 if you serve your application on multiple servers and want to share the session data between the servers.
 
-When using the database handler, you will need to create a table to store the session data. Below is an example of a
-table that can be used to store the session data in a MySQL database:
+To use the database handler, you will need to install the `doctrine/dbal` package, which is a database abstraction layer
+that provides a unified API for accessing different databases. You can install the package via Composer:
+
+```bash
+composer require doctrine/dbal
+```
+
+You will also need to create a database table to store the session data. The table should have the following structure:
 
 ```sql
 CREATE TABLE `sessions`
@@ -493,6 +499,7 @@ $handlerOptions = [
             'host' => 'localhost',
             'driver' => 'pdo_mysql',
         ],
+        //'connection' => 'mysqli://user:secret@localhost/mydb',
         //'options' => [
         //    'table' => 'sessions',
         //    'idColumn' => 'id',
@@ -509,7 +516,8 @@ $sessionManager = new Zaphyr\Session\SessionManager($sessionName, $handlerOption
 ```
 
 The [database handler](#database-session-handler) requires a `connection` configuration, which is used to create
-a database connection. Optionally, you can pass an `options` array to the database handler configuration, which is used
+a database connection. The connection can be specified as an array of connection parameters or as a
+DSN string. Optionally, you can pass an `options` array to the database handler configuration, which is used
 to configure the database table and column names.
 
 The [file handler](#file-session-handler) requires a `path` configuration, which is used to store the session
