@@ -320,10 +320,9 @@ class MyCustomStore implements Psr\SimpleCache\CacheInterface
 
 The `Zaphyr\Cache\CacheManager` class is a convenient way to manage multiple cache stores. It allows you to easily
 switch between different cache stores and provides a unified interface for interacting with them. The `CacheManager`
-class is responsible for creating and managing cache store instances. It also provides a way to set the default cache
-store and switch between different cache stores. The cache manager class needs to be configured with the cache store
-configuration before it can be used. The configuration is an associative array where the keys are the cache store names
-and the values are the [configuration options for each cache store](#cache-stores).
+class is responsible for creating and managing cache store instances. The cache manager class needs to be configured
+with the cache store configuration before it can be used. The configuration is an associative array where the keys are
+the cache store names and the values are the [configuration options for each cache store](#cache-stores).
 
 ```php
 $storeConfig = [
@@ -337,10 +336,18 @@ $storeConfig = [
         'port' => 6379,
         'prefix' => 'zaphyr_cache',
     ],
+    //Zaphyr\Cache\CacheManager::REDIS_STORE => [
+    //    'connection' => 'tcp://127.0.0.1:6379?database=15',
+    //    'prefix' => 'zaphyr_cache',
+    //],
 ];
 
 $cacheManager = new Zaphyr\Cache\CacheManager($storeConfig);
 ```
+
+The redis store configuration can be specified in two ways: either using a named array with the connection parameters
+or using a single connection URI string. The `Zaphyr\Cache\CacheManager` class will automatically create the appropriate
+`Predis\Client` instance based on the provided configuration.
 
 #### Create a cache instance
 
