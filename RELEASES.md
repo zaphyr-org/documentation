@@ -8,6 +8,7 @@ option. All changes, whether they are bug fixes, new features, or breaking chang
 
 | Version                                                            | Supported PHP versions | Release date | Changelog                                                                                        |
 |--------------------------------------------------------------------|------------------------|--------------|--------------------------------------------------------------------------------------------------|
+| <span class="badge badge-soft badge-error">🔥 1.0.0-alpha.7</span> | 8.1 - 8.4              | 2025-06-08   | [Read](https://github.com/zaphyr-org/framework/blob/master/CHANGELOG.md#-v100-alpha7-2025-06-08) |
 | <span class="badge badge-soft badge-error">🔥 1.0.0-alpha.6</span> | 8.1 - 8.4              | 2025-05-10   | [Read](https://github.com/zaphyr-org/framework/blob/master/CHANGELOG.md#-v100-alpha6-2025-05-10) |
 | <span class="badge badge-soft badge-error">🔥 1.0.0-alpha.5</span> | 8.1 - 8.4              | 2025-02-10   | [Read](https://github.com/zaphyr-org/framework/blob/master/CHANGELOG.md#-v100-alpha5-2025-02-10) |
 | <span class="badge badge-soft badge-error">🔥 1.0.0-alpha.4</span> | 8.1 - 8.3              | 2025-02-08   | [Read](https://github.com/zaphyr-org/framework/blob/master/CHANGELOG.md#-v100-alpha4-2025-02-08) |
