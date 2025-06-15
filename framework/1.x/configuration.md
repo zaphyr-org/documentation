@@ -24,6 +24,125 @@ modify this file to meet your specific requirements.
 > sensitive information. Subsequently, instruct other developers to copy the `.env.dist` file to `.env` and populate it
 > with their specific environment values.
 
+### Application environment
+
+ZAPHYR supports environment-based configuration, allowing you to tailor behavior for `development`, `testing`,
+`production` or any custom environment.
+
+The current environment is determined by the `APP_ENV` variable defined in your application's `.env` file:
+
+```bash
+APP_ENV=development
+```
+
+ZAPHYR supports the following predefined environments:
+
+- `development` - for development environments
+- `testing` - for testing environments
+- `production` - for production environments
+
+You can check the current environment programmatically:
+
+```php
+if (app()->isDevelopmentEnvironment()) {
+    // Run dev-specific code, such as debug panels or verbose logs
+}
+
+if (app()->isTestingEnvironment()) {
+    // Load mocks or disable third-party integrations
+}
+
+if (app()->isProductionEnvironment()) {
+    // Enable performance optimizations or production services
+}
+```
+
+#### Custom environments
+
+ZAPHYR is flexible and allows you to define your own custom environments. For instance, you might use a
+`staging` environment for pre-release testing.
+
+Update the `.env` file accordingly:
+
+```bash
+APP_ENV=staging
+```
+
+And detect it in code:
+
+```php
+if (app()->isEnvironment('staging')) {
+    // Staging-specific configurations
+}
+```
+
+You can use any custom string as a valid environment name, just ensure your logic accounts for it where necessary.
+
+#### Show environment in the terminal
+
+To display the currently active environment in the terminal, run:
+
+```bash
+php bin/zaphyr app:environment
+```
+
+This is helpful for verifying configuration, especially in CI/CD pipelines or debugging deployments.
+
+### Application key
+
+The application key (`APP_KEY`) is a critical security part of your ZAPHYR application. It is used to:
+
+- Encrypt and decrypt sensitive data (e.g. cookies, user sessions)
+- Ensure data integrity and confidentiality across application boundaries
+
+A unique, randomly generated key should be assigned to every application and **must not be shared or reused** across
+environments.
+
+#### Location of the application key
+
+The key is stored in your `.env` file:
+
+```bash
+APP_KEY=base64:randomlyGeneratedKeyHere
+```
+
+This key is automatically generated during project creation. However, you may regenerate it manually if needed.
+
+#### Regenerate the application key
+
+To generate a new secure application key, run:
+
+```bash
+php bin/zaphyr app:key
+```
+
+This will replace the existing `APP_KEY` in your `.env` file with a newly generated random value.
+
+> [!WARNING]
+> Regenerating the application key will **invalidate all existing encrypted data**, including,
+> user sessions, encrypted cookies and any custom encrypted values. This may force users to log
+> in again or cause encrypted payloads to become inaccessible. Only perform this in development or
+> during controlled maintenance windows.
+
+#### Force the key regeneration
+
+By default, ZAPHYR will prompt for confirmation before overwriting the key in a production environment. To skip this
+confirmation and force the operation, use the `--force` flag:
+
+```bash
+php bin/zaphyr app:key --force
+```
+
+#### Show the current application key
+
+To view the currently active application key without changing it, use the `--show` flag:
+
+```bash
+php bin/zaphyr app:key --show
+```
+
+This can be helpful for debugging or verifying your application setup across multiple environments.
+
 ## Configuration variables
 
 The `config` directory contains all the configuration files for the application. Each file is named according to the
