@@ -146,7 +146,7 @@ $application = new Zaphyr\Framework\Application($paths);
 
 > [!IMPORTANT]
 > However, this approach should only be used in unit test environments, as
-> the [plugin installer](/docs/framework/latest/plugins)
+> the [plugin installer](/docs/plugins/latest/overview#plugin-installer)
 > only reads the application paths from the `composer.json` file.
 
 > [!NOTE]
