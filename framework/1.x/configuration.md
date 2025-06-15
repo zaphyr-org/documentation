@@ -23,58 +23,11 @@ modify this file to meet your specific requirements.
 > sensitive information. Subsequently, instruct other developers to copy the `.env.dist` file to `.env` and populate it
 > with their specific environment values.
 
-Let's take a closer look at the `.env` file and its contents. Right after installation, the file typically looks
-like this:
-
-```bash
-APP_NAME=ZAPHYR
-APP_URL=
-APP_ENV=development
-APP_DEBUG=true
-APP_KEY=
-APP_CIPHER=AES-256-CBC
-```
-
-#### The `APP_NAME` and `APP_URL` variables
-
-These variables are used to set the application's name and base URL. While not directly used by the framework, they can
-be useful for displaying the application name in the user interface or for generating links within the application.
-
-#### The `APP_ENV` variable
-
-This variable sets the application's environment. It determines the environment in which the application is running,
-such as `development`, `testing`, or `production`.
-
-#### The `APP_DEBUG` variable
-
-This variable enables or disables the application's debug mode. When set to `true`, the application displays detailed
-error messages, which is useful during development. However, it is recommended to set this value to `false` in
-production to avoid exposing sensitive information.
-
-#### The `APP_KEY` variable
-
-This variable sets the application's encryption key, which is crucial for encrypting and decrypting data within the
-application. During the installation process, a random key is generated and stored in the `.env` file.
-
-> [!TIP]
-> You can generate a new key by running the `php bin/zaphyr app:key` command. This will create a new key and update it
-> directly in the `.env` file.
-<!-- @todo: add link to the key:generate command -->
-
-#### The `APP_CIPHER` variable
-
-This variable sets the application's encryption cipher. By default, ZAPHYR uses the `AES-256-CBC` cipher, but you can
-also change it to `AES-128-CBC`.
-
 ## Configuration variables
 
 The `config` directory contains all the configuration files for the application. Each file is named according to the
 configuration section it represents. Configuration files are loaded using the [Config repository](/docs/repositories/latest/config),
 allowing you to access settings from anywhere in your application.
-
-Every ZAPHYR application includes a default configuration file named `app.yaml`, which provides a well-structured
-starting point. While the default settings are optimized for general use, you can modify them to better fit your specific
-needs.
 
 ### Configuration file replacers
 
