@@ -201,3 +201,26 @@ commands_ignore:
 ```
 
 Any command listed here will be ignored even if it exists in the default directory or is explicitly registered.
+
+## Cache commands
+
+To enhance performance, particularly in production environments, you can cache your console commands. This eliminates
+the overhead of scanning and loading command classes on every execution.
+
+The `commands:cache` command compiles all available commands, including those from the framework, plugins, and your
+application, into a single optimized cache file:
+
+```bash
+php bin/zaphyr commands:cache
+```
+
+Once cached, this file will be loaded automatically for all future CLI invocations, improving startup time and reducing
+resource usage.
+
+If you make changes to your commands or install new plugins, you should clear the cache using:
+
+```bash
+php bin/zaphyr commands:clear
+```
+
+After clearing the cache, you may regenerate it by running the `commands:cache` command again.
