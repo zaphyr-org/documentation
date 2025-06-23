@@ -6,7 +6,7 @@ All application configurations are stored in the [
 files. This flexibility is possible because the ZAPHYR framework uses the
 [Config repository](/docs/repositories/latest/config) to load the configuration files.
 
-## Environment variables
+## Environment Variables
 
 While developing applications, it is common to have different configurations for various environments. For instance,
 you might use distinct database credentials for your development and production environments. To manage this, ZAPHYR
@@ -24,7 +24,7 @@ modify this file to meet your specific requirements.
 > sensitive information. Subsequently, instruct other developers to copy the `.env.dist` file to `.env` and populate it
 > with their specific environment values.
 
-### Application environment
+### Application Environment
 
 ZAPHYR supports environment-based configuration, allowing you to tailor behavior for `development`, `testing`,
 `production` or any custom environment.
@@ -57,7 +57,7 @@ if (app()->isProductionEnvironment()) {
 }
 ```
 
-#### Custom environments
+#### Custom Environments
 
 ZAPHYR is flexible and allows you to define your own custom environments. For instance, you might use a
 `staging` environment for pre-release testing.
@@ -78,7 +78,7 @@ if (app()->isEnvironment('staging')) {
 
 You can use any custom string as a valid environment name, just ensure your logic accounts for it where necessary.
 
-#### Show environment in the terminal
+#### Show Environment in the Terminal
 
 To display the currently active environment in the terminal, run:
 
@@ -88,7 +88,7 @@ php bin/zaphyr app:environment
 
 This is helpful for verifying configuration, especially in CI/CD pipelines or debugging deployments.
 
-### Application key
+### Application Key
 
 The application key (`APP_KEY`) is a critical security part of your ZAPHYR application. It is used to:
 
@@ -98,7 +98,7 @@ The application key (`APP_KEY`) is a critical security part of your ZAPHYR appli
 A unique, randomly generated key should be assigned to every application and **must not be shared or reused** across
 environments.
 
-#### Location of the application key
+#### Location of the Application Key
 
 The key is stored in your `.env` file:
 
@@ -108,7 +108,7 @@ APP_KEY=base64:randomlyGeneratedKeyHere
 
 This key is automatically generated during project creation. However, you may regenerate it manually if needed.
 
-#### Regenerate the application key
+#### Regenerate the Application Key
 
 To generate a new secure application key, run:
 
@@ -124,7 +124,7 @@ This will replace the existing `APP_KEY` in your `.env` file with a newly genera
 > in again or cause encrypted payloads to become inaccessible. Only perform this in development or
 > during controlled maintenance windows.
 
-#### Force the key regeneration
+#### Force the Key Regeneration
 
 By default, ZAPHYR will prompt for confirmation before overwriting the key in a production environment. To skip this
 confirmation and force the operation, use the `--force` flag:
@@ -133,7 +133,7 @@ confirmation and force the operation, use the `--force` flag:
 php bin/zaphyr app:key --force
 ```
 
-#### Show the current application key
+#### Show the Current Application Key
 
 To view the currently active application key without changing it, use the `--show` flag:
 
@@ -143,14 +143,14 @@ php bin/zaphyr app:key --show
 
 This can be helpful for debugging or verifying your application setup across multiple environments.
 
-## Configuration variables
+## Configuration Variables
 
 The `config` directory contains all the configuration files for the application. Each file is named according to the
 configuration section it represents. Configuration files are loaded using the
 [Config repository](/docs/repositories/latest/config), allowing you to access settings from anywhere in your
 application.
 
-### Configuration file replacers
+### Configuration File Replacers
 
 To set dynamic configuration values, you can use the `%env%` replacer in your configuration files. This allows you to
 reference environment variables directly. For example, to set the application name from the `APP_NAME` environment
@@ -169,7 +169,7 @@ environments.
 templates: '%path:resources%/views'
 ```
 
-### Retrieving configuration values in your application
+### Retrieving Configuration Values in Your Application
 
 You can access configuration values from anywhere in your application using the
 [Config](/docs/repositories/latest/config) repository. It provides a simple and convenient way to retrieve settings:
@@ -178,7 +178,7 @@ You can access configuration values from anywhere in your application using the
 $container->get(Zaphyr\Config\Contracts\ConfigInterface::class)->get('app.name');
 ```
 
-## Cache configuration
+## Cache Configuration
 
 Caching your application's configuration files can significantly improve performance by reducing the number of files
 loaded on each request, resulting in faster response times. To cache your configuration files, run the following
@@ -199,7 +199,7 @@ php bin/zaphyr config:clear
 > be taken from the cached configuration files. Therefore, it is crucial to clear the cache whenever you make changes
 > to your configuration files or the `.env` file to ensure that the latest settings are applied.
 
-## List configuration via CLI
+## List Configuration via CLI
 
 You can view all the configuration values currently loaded in your application by running the following command in the
 terminal:
@@ -210,3 +210,31 @@ php bin/zaphyr config:list
 
 This will output a structured list of configuration keys and their corresponding values, making it easier to debug or
 inspect the active configuration at runtime.
+
+## Maintenance Mode
+
+There are times when you may need to temporarily take your application offline for updates or maintenance. ZAPHYR makes
+this easy with built-in support for maintenance mode, allowing you to show a custom maintenance page to users while
+blocking access to the rest of the application.
+
+To enable maintenance mode, run the following command:
+
+```bash
+php bin/zaphyr maintenance:down
+```
+
+By default, this command displays a generic maintenance page using the built-in template located at
+`vendor/zaphyr-org/framework/views/maintenance.html`. If you prefer to show a custom maintenance page, you can specify
+your own HTML file using the `--template` option:
+
+```bash
+php bin/zaphyr maintenance:down --template="/path/to/your/maintenance/file.html"
+```
+
+Once your maintenance is complete, and you’re ready to bring the application back online, run:
+
+```bash
+php bin/zaphyr maintenance:up
+```
+
+This will disable the maintenance mode and restore full access to your application.
