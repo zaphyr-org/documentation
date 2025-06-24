@@ -14,7 +14,7 @@ separation of concerns and maintainable codebases.
 Whether you're building small microservices or large-scale enterprise applications, ZAPHYR's plugin-based architecture
 ensures that your code remains modular, reusable, and easy to extend.
 
-## Plugin installer
+## Plugin Installer
 
 ZAPHYR includes a powerful plugin installer system that simplifies the process of integrating and managing plugins
 within your application. This system is enabled through the `allow-plugins` section in your app’s `composer.json` file:
@@ -40,7 +40,7 @@ This ensures a seamless and consistent setup of third-party plugins without requ
 For plugin authors, this system also allows defining integration logic directly in the plugin's `composer.json`,
 enabling ZAPHYR to manage everything automatically.
 
-## Create custom plugins
+## Create Custom Plugins
 
 Creating your own plugin for ZAPHYR allows you to encapsulate and distribute reusable functionality across projects or
 teams. The process is straightforward and follows a structured approach to ensure seamless integration with the
@@ -85,7 +85,7 @@ The key elements of the composer.json file include:
 }
 ```
 
-#### Plugin environments
+#### Plugin Environments
 
 In the `extra` section of your plugin's `composer.json, you can define which environments the plugin class should be
 loaded in. This gives you fine-grained control over when your plugin is active, depending on the application's runtime
@@ -102,7 +102,7 @@ You can specify one or more of the following values:
 
 This mechanism ensures that plugins behave appropriately in different stages of the application lifecycle.
 
-#### Copy files
+#### Copy Files
 
 You can specify files or directories that should be automatically copied to specific locations within your application
 when the plugin is installed. This is useful for distributing configuration files, assets, or other resources required
@@ -157,7 +157,7 @@ application directories:
 > with projects that use a
 > [custom directory structure](/docs/framework/latest/directory-structure#change-directory-structure).
 
-#### Add environment variables
+#### Add Environment Variables
 
 If your plugin relies on specific environment variables, you can define them under the `env` section in your plugin’s
 `composer.json` file. This allows you to set default values that will be added to the application’s `.env` file during
@@ -202,7 +202,7 @@ The block is clearly marked using `start-plugin-config` and `end-plugin-config` 
 they allow the plugin installer to manage the configuration block reliably during updates or removals. You should
 not modify or remove these comments manually.
 
-#### Naming environment variables
+#### Naming Environment Variables
 
 When defining environment variables for your plugin, it's crucial to follow a consistent naming convention to ensure
 to avoid conflicts with other plugins or core application variables; environment variable names should be **prefixed**
@@ -215,7 +215,7 @@ ACME_MY_PLUGIN_*
 
 This ensures your variables remain uniquely scoped to your plugin and follow best practices for modular configuration.
 
-### Plugin class
+### Plugin Class
 
 The core of any ZAPHYR plugin is its plugin class. This class acts as the **entry point** for your plugin and defines
 the components it contributes to the application, such as service providers, console commands, controllers, middleware,
@@ -319,12 +319,12 @@ class MyPlugin extends AbstractPlugin
 
 This modular approach keeps your plugin class clean and focused, allowing it to scale gracefully as your plugin grows.
 
-### Register the plugin
+### Register the Plugin
 
 After you've created your plugin class and defined its metadata in the plugin’s `composer.json` file, the final step is
 to register it in your application so that it can be installed and used.
 
-#### Add the plugin to your application
+#### Add the Plugin to Your Application
 
 Include your plugin in the `require` section of your application's root `composer.json` file:
 
@@ -342,7 +342,7 @@ Include your plugin in the `require` section of your application's root `compose
 
 After adding the plugin to your `composer.json`, you can run the following command to install it:
 
-#### Install the plugin
+#### Install the Plugin
 
 Once the dependency is added, install it via Composer:
 
