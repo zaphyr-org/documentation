@@ -93,6 +93,9 @@ public function getAction(): Response
 }
 ```
 
+It is also possible to add middleware to routes. Read more about route middleware in the
+[middleware docs](/docs/framework/latest/middleware#route-middleware).
+
 ### Route Groups
 
 ZAPHYR also supports route groups by using the `Zaphyr\Router\Attributes\Group` attribute. Route groups allow you to
@@ -135,6 +138,10 @@ class UserController
     // …
 }
 ```
+
+Groups are also useful for applying middleware to a set of routes. You can specify middleware that should be applied to
+all routes within the group, allowing you to share logic among related endpoints. Read more about group middleware in the
+[middleware docs](/docs/framework/latest/middleware#group-middleware).
 
 ### Route Patterns
 
@@ -214,7 +221,7 @@ class ApiController
 }
 ```
 
-### List routes
+### List Routes
 
 You can list all the routes defined in your application using the `routes:list` command in your terminal. This
 command will display all the routes, their HTTP methods, URIs, route names, and the associated controller actions,
