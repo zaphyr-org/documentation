@@ -187,6 +187,21 @@ Returns the namespace from a given file.
 Zaphyr\Utils\ClassFinder::getNamespaceFromFile('src/Bar.php'); // 'Foo\Bar'
 ```
 
+## Clock
+
+<span class="badge badge-soft badge-info">Available since v2.3.0</span>
+
+Utility class for date and time representation, including the [PSR-20](https://www.php-fig.org/psr/psr-20/) interface.
+
+#### now
+
+Returns the current time as a [`DateTimeImmutable`](https://www.php.net/manual/en/class.datetimeimmutable.php) Object.
+
+```php
+$now = (new Zaphyr\Utils\Clock())->now(); // \DateTimeImmutable
+$timestamp = $now->getTimestamp();
+```
+
 ## Country
 
 Useful helper class for country names and lists.
