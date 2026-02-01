@@ -616,6 +616,10 @@ Replaces content inside a given file. If the file does not exist it will be crea
 Zaphyr\Utils\File::replace(__FILE__, 'contents');
 ```
 
+> [!CAUTION]
+> This method is **not supported on Windows systems**.
+> Calling this method on a Windows machine will throw a RuntimeException.
+
 #### prepend
 
 Prepends content to a given file. If the file does not exist, it will be created.
